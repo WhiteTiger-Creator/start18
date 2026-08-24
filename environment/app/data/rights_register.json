@@ -1,0 +1,2082 @@
+[
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 396,
+    "holder": "holder-036",
+    "priority_year": 1917,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0001"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 465,
+    "holder": "holder-049",
+    "priority_year": 1992,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0002"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 398,
+    "holder": "holder-085",
+    "priority_year": 1987,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0003"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 452,
+    "holder": "holder-047",
+    "priority_year": 1936,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0004"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 375,
+    "holder": "holder-019",
+    "priority_year": 1939,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0005"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 704,
+    "holder": "holder-001",
+    "priority_year": 1895,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0006"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 293,
+    "holder": "holder-012",
+    "priority_year": 1942,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0007"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 753,
+    "holder": "holder-081",
+    "priority_year": 1998,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0008"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 457,
+    "holder": "holder-024",
+    "priority_year": 1929,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0009"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 635,
+    "holder": "holder-030",
+    "priority_year": 1918,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0010"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 879,
+    "holder": "holder-057",
+    "priority_year": 1945,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0011"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 250,
+    "holder": "holder-025",
+    "priority_year": 1936,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0012"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 317,
+    "holder": "holder-085",
+    "priority_year": 1956,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0013"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 239,
+    "holder": "holder-066",
+    "priority_year": 1942,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0014"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 244,
+    "holder": "holder-078",
+    "priority_year": 1912,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0015"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 838,
+    "holder": "holder-019",
+    "priority_year": 1929,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0016"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 555,
+    "holder": "holder-043",
+    "priority_year": 1893,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0017"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 61,
+    "holder": "holder-047",
+    "priority_year": 1917,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0018"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 426,
+    "holder": "holder-076",
+    "priority_year": 1953,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0019"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 700,
+    "holder": "holder-065",
+    "priority_year": 1915,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0020"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 551,
+    "holder": "holder-053",
+    "priority_year": 1954,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0021"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 285,
+    "holder": "holder-062",
+    "priority_year": 1908,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0022"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 447,
+    "holder": "holder-010",
+    "priority_year": 1958,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0023"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 543,
+    "holder": "holder-044",
+    "priority_year": 1915,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0024"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 755,
+    "holder": "holder-022",
+    "priority_year": 1954,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0025"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 778,
+    "holder": "holder-043",
+    "priority_year": 1948,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0026"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 764,
+    "holder": "holder-005",
+    "priority_year": 1924,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0027"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 125,
+    "holder": "holder-050",
+    "priority_year": 1973,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0028"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 859,
+    "holder": "holder-041",
+    "priority_year": 1919,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0029"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 551,
+    "holder": "holder-010",
+    "priority_year": 1941,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0030"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 285,
+    "holder": "holder-066",
+    "priority_year": 1963,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0031"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 366,
+    "holder": "holder-034",
+    "priority_year": 1995,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0032"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 374,
+    "holder": "holder-005",
+    "priority_year": 1889,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0033"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 792,
+    "holder": "holder-011",
+    "priority_year": 1956,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0034"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 478,
+    "holder": "holder-034",
+    "priority_year": 1988,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0035"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 673,
+    "holder": "holder-067",
+    "priority_year": 1961,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0036"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 457,
+    "holder": "holder-075",
+    "priority_year": 1962,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0037"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 373,
+    "holder": "holder-004",
+    "priority_year": 1894,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0038"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 172,
+    "holder": "holder-085",
+    "priority_year": 1994,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0039"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 825,
+    "holder": "holder-020",
+    "priority_year": 1966,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0040"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 588,
+    "holder": "holder-051",
+    "priority_year": 1961,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0041"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 150,
+    "holder": "holder-042",
+    "priority_year": 1992,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0042"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 728,
+    "holder": "holder-085",
+    "priority_year": 1897,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0043"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 404,
+    "holder": "holder-075",
+    "priority_year": 1977,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0044"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 770,
+    "holder": "holder-015",
+    "priority_year": 1903,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0045"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 887,
+    "holder": "holder-011",
+    "priority_year": 1927,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0046"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 791,
+    "holder": "holder-027",
+    "priority_year": 1892,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0047"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 220,
+    "holder": "holder-020",
+    "priority_year": 1994,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0048"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 636,
+    "holder": "holder-005",
+    "priority_year": 1934,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0049"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 783,
+    "holder": "holder-056",
+    "priority_year": 1918,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0050"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 243,
+    "holder": "holder-001",
+    "priority_year": 1907,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0051"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 172,
+    "holder": "holder-035",
+    "priority_year": 1951,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0052"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 279,
+    "holder": "holder-057",
+    "priority_year": 1976,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0053"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 740,
+    "holder": "holder-049",
+    "priority_year": 1915,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0054"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 819,
+    "holder": "holder-015",
+    "priority_year": 1975,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0055"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 50,
+    "holder": "holder-003",
+    "priority_year": 1890,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0056"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 433,
+    "holder": "holder-075",
+    "priority_year": 1950,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0057"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 300,
+    "holder": "holder-064",
+    "priority_year": 1947,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0058"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 709,
+    "holder": "holder-077",
+    "priority_year": 1962,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0059"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 724,
+    "holder": "holder-054",
+    "priority_year": 1976,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0060"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 590,
+    "holder": "holder-017",
+    "priority_year": 1963,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0061"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 485,
+    "holder": "holder-060",
+    "priority_year": 1925,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0062"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 756,
+    "holder": "holder-056",
+    "priority_year": 1967,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0063"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 237,
+    "holder": "holder-034",
+    "priority_year": 1986,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0064"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 362,
+    "holder": "holder-004",
+    "priority_year": 1898,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0065"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 365,
+    "holder": "holder-051",
+    "priority_year": 1893,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0066"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 391,
+    "holder": "holder-009",
+    "priority_year": 1958,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0067"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 73,
+    "holder": "holder-029",
+    "priority_year": 1973,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0068"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 680,
+    "holder": "holder-063",
+    "priority_year": 1933,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0069"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 469,
+    "holder": "holder-037",
+    "priority_year": 1905,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0070"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 48,
+    "holder": "holder-057",
+    "priority_year": 1985,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0071"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 41,
+    "holder": "holder-047",
+    "priority_year": 1957,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0072"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 604,
+    "holder": "holder-078",
+    "priority_year": 1982,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0073"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 312,
+    "holder": "holder-085",
+    "priority_year": 1894,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0074"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 239,
+    "holder": "holder-023",
+    "priority_year": 1969,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0075"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 144,
+    "holder": "holder-015",
+    "priority_year": 1923,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0076"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 434,
+    "holder": "holder-011",
+    "priority_year": 1921,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0077"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 282,
+    "holder": "holder-049",
+    "priority_year": 1944,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0078"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 401,
+    "holder": "holder-041",
+    "priority_year": 1924,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0079"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 511,
+    "holder": "holder-045",
+    "priority_year": 1889,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0080"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 69,
+    "holder": "holder-062",
+    "priority_year": 1927,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0081"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 91,
+    "holder": "holder-019",
+    "priority_year": 1911,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0082"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 127,
+    "holder": "holder-077",
+    "priority_year": 1969,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0083"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 192,
+    "holder": "holder-049",
+    "priority_year": 1900,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0084"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 443,
+    "holder": "holder-010",
+    "priority_year": 1986,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0085"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 598,
+    "holder": "holder-028",
+    "priority_year": 1911,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0086"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 343,
+    "holder": "holder-029",
+    "priority_year": 1935,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0087"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 54,
+    "holder": "holder-014",
+    "priority_year": 1962,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0088"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 78,
+    "holder": "holder-061",
+    "priority_year": 1893,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0089"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 168,
+    "holder": "holder-033",
+    "priority_year": 1923,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0090"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 503,
+    "holder": "holder-048",
+    "priority_year": 1905,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0091"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 113,
+    "holder": "holder-049",
+    "priority_year": 1984,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0092"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 128,
+    "holder": "holder-067",
+    "priority_year": 1963,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0093"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 519,
+    "holder": "holder-072",
+    "priority_year": 1907,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0094"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 472,
+    "holder": "holder-052",
+    "priority_year": 1891,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0095"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 302,
+    "holder": "holder-009",
+    "priority_year": 1973,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0096"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 898,
+    "holder": "holder-043",
+    "priority_year": 1912,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0097"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 743,
+    "holder": "holder-078",
+    "priority_year": 1905,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0098"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 876,
+    "holder": "holder-087",
+    "priority_year": 1893,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0099"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 739,
+    "holder": "holder-032",
+    "priority_year": 1984,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0100"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 373,
+    "holder": "holder-003",
+    "priority_year": 1907,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0101"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 506,
+    "holder": "holder-013",
+    "priority_year": 1973,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0102"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 119,
+    "holder": "holder-039",
+    "priority_year": 1955,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0103"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 327,
+    "holder": "holder-064",
+    "priority_year": 1974,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0104"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 369,
+    "holder": "holder-043",
+    "priority_year": 1917,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0105"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 412,
+    "holder": "holder-027",
+    "priority_year": 1972,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0106"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 288,
+    "holder": "holder-042",
+    "priority_year": 1977,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0107"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 554,
+    "holder": "holder-071",
+    "priority_year": 1970,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0108"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 330,
+    "holder": "holder-053",
+    "priority_year": 1931,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0109"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 130,
+    "holder": "holder-034",
+    "priority_year": 1934,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0110"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 823,
+    "holder": "holder-002",
+    "priority_year": 1915,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0111"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 326,
+    "holder": "holder-012",
+    "priority_year": 1975,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0112"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 448,
+    "holder": "holder-049",
+    "priority_year": 1909,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0113"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 794,
+    "holder": "holder-085",
+    "priority_year": 1987,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0114"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 518,
+    "holder": "holder-001",
+    "priority_year": 1968,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0115"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 870,
+    "holder": "holder-052",
+    "priority_year": 1915,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0116"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 445,
+    "holder": "holder-067",
+    "priority_year": 1966,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0117"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 220,
+    "holder": "holder-059",
+    "priority_year": 1888,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0118"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 761,
+    "holder": "holder-020",
+    "priority_year": 1985,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0119"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 545,
+    "holder": "holder-021",
+    "priority_year": 1927,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0120"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 78,
+    "holder": "holder-061",
+    "priority_year": 1892,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0121"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 255,
+    "holder": "holder-003",
+    "priority_year": 1909,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0122"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 460,
+    "holder": "holder-086",
+    "priority_year": 1920,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0123"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 681,
+    "holder": "holder-041",
+    "priority_year": 1892,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0124"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 442,
+    "holder": "holder-085",
+    "priority_year": 1906,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0125"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 306,
+    "holder": "holder-079",
+    "priority_year": 1939,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0126"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 595,
+    "holder": "holder-086",
+    "priority_year": 1945,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0127"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 97,
+    "holder": "holder-051",
+    "priority_year": 1919,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0128"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 640,
+    "holder": "holder-077",
+    "priority_year": 1949,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0129"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 90,
+    "holder": "holder-005",
+    "priority_year": 1963,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0130"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 798,
+    "holder": "holder-038",
+    "priority_year": 1989,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0131"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 245,
+    "holder": "holder-044",
+    "priority_year": 1974,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0132"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 500,
+    "holder": "holder-051",
+    "priority_year": 1975,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0133"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 172,
+    "holder": "holder-067",
+    "priority_year": 1958,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0134"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 815,
+    "holder": "holder-056",
+    "priority_year": 1958,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0135"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 407,
+    "holder": "holder-053",
+    "priority_year": 1911,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0136"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 658,
+    "holder": "holder-020",
+    "priority_year": 1910,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0137"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 646,
+    "holder": "holder-065",
+    "priority_year": 1892,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0138"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 538,
+    "holder": "holder-008",
+    "priority_year": 1912,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0139"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 646,
+    "holder": "holder-080",
+    "priority_year": 1946,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0140"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 384,
+    "holder": "holder-050",
+    "priority_year": 1889,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0141"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 246,
+    "holder": "holder-031",
+    "priority_year": 1990,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0142"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 674,
+    "holder": "holder-046",
+    "priority_year": 1979,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0143"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 485,
+    "holder": "holder-036",
+    "priority_year": 1890,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0144"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 397,
+    "holder": "holder-083",
+    "priority_year": 1939,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0145"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 663,
+    "holder": "holder-084",
+    "priority_year": 1916,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0146"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 769,
+    "holder": "holder-024",
+    "priority_year": 1954,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0147"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 426,
+    "holder": "holder-073",
+    "priority_year": 1898,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0148"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 102,
+    "holder": "holder-005",
+    "priority_year": 1914,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0149"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 704,
+    "holder": "holder-024",
+    "priority_year": 1900,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0150"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 593,
+    "holder": "holder-043",
+    "priority_year": 1918,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0151"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 248,
+    "holder": "holder-019",
+    "priority_year": 1968,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0152"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 86,
+    "holder": "holder-074",
+    "priority_year": 1913,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0153"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 523,
+    "holder": "holder-064",
+    "priority_year": 1966,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0154"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 841,
+    "holder": "holder-024",
+    "priority_year": 1966,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0155"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 621,
+    "holder": "holder-029",
+    "priority_year": 1958,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0156"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 535,
+    "holder": "holder-027",
+    "priority_year": 1966,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0157"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 598,
+    "holder": "holder-050",
+    "priority_year": 1904,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0158"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 72,
+    "holder": "holder-070",
+    "priority_year": 1938,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0159"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 745,
+    "holder": "holder-075",
+    "priority_year": 1989,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0160"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 214,
+    "holder": "holder-013",
+    "priority_year": 1985,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0161"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 864,
+    "holder": "holder-055",
+    "priority_year": 1980,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0162"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 176,
+    "holder": "holder-053",
+    "priority_year": 1934,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0163"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 381,
+    "holder": "holder-035",
+    "priority_year": 1918,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0164"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 143,
+    "holder": "holder-066",
+    "priority_year": 1941,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0165"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 265,
+    "holder": "holder-068",
+    "priority_year": 1903,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0166"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 174,
+    "holder": "holder-008",
+    "priority_year": 1955,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0167"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 606,
+    "holder": "holder-050",
+    "priority_year": 1900,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0168"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 731,
+    "holder": "holder-061",
+    "priority_year": 1924,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0169"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 859,
+    "holder": "holder-053",
+    "priority_year": 1900,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0170"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 582,
+    "holder": "holder-060",
+    "priority_year": 1975,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0171"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 665,
+    "holder": "holder-068",
+    "priority_year": 1974,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0172"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 659,
+    "holder": "holder-029",
+    "priority_year": 1893,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0173"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 638,
+    "holder": "holder-026",
+    "priority_year": 1964,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0174"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 278,
+    "holder": "holder-070",
+    "priority_year": 1954,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0175"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 842,
+    "holder": "holder-050",
+    "priority_year": 1893,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0176"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 550,
+    "holder": "holder-022",
+    "priority_year": 1917,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0177"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 704,
+    "holder": "holder-072",
+    "priority_year": 1895,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0178"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 823,
+    "holder": "holder-073",
+    "priority_year": 1989,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0179"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 137,
+    "holder": "holder-051",
+    "priority_year": 1948,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0180"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 291,
+    "holder": "holder-062",
+    "priority_year": 1944,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0181"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 393,
+    "holder": "holder-042",
+    "priority_year": 1902,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0182"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 172,
+    "holder": "holder-011",
+    "priority_year": 1894,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0183"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 133,
+    "holder": "holder-031",
+    "priority_year": 1910,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0184"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 186,
+    "holder": "holder-086",
+    "priority_year": 1888,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0185"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 302,
+    "holder": "holder-008",
+    "priority_year": 1899,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0186"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 245,
+    "holder": "holder-045",
+    "priority_year": 1984,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0187"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 83,
+    "holder": "holder-064",
+    "priority_year": 1906,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0188"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 657,
+    "holder": "holder-066",
+    "priority_year": 1969,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0189"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 694,
+    "holder": "holder-056",
+    "priority_year": 1988,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0190"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 157,
+    "holder": "holder-087",
+    "priority_year": 1973,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0191"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 72,
+    "holder": "holder-017",
+    "priority_year": 1942,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0192"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 363,
+    "holder": "holder-043",
+    "priority_year": 1969,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0193"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 622,
+    "holder": "holder-061",
+    "priority_year": 1946,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0194"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 88,
+    "holder": "holder-077",
+    "priority_year": 1995,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0195"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 82,
+    "holder": "holder-070",
+    "priority_year": 1985,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0196"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 655,
+    "holder": "holder-070",
+    "priority_year": 1974,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0197"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 719,
+    "holder": "holder-037",
+    "priority_year": 1916,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0198"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 658,
+    "holder": "holder-033",
+    "priority_year": 1996,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0199"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 86,
+    "holder": "holder-036",
+    "priority_year": 1899,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0200"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 863,
+    "holder": "holder-019",
+    "priority_year": 1972,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0201"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 168,
+    "holder": "holder-005",
+    "priority_year": 1954,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0202"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 783,
+    "holder": "holder-045",
+    "priority_year": 1903,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0203"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 173,
+    "holder": "holder-053",
+    "priority_year": 1919,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0204"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 532,
+    "holder": "holder-015",
+    "priority_year": 1963,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0205"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 485,
+    "holder": "holder-076",
+    "priority_year": 1983,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0206"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 379,
+    "holder": "holder-024",
+    "priority_year": 1930,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0207"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 166,
+    "holder": "holder-067",
+    "priority_year": 1955,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0208"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 266,
+    "holder": "holder-033",
+    "priority_year": 1931,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0209"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 493,
+    "holder": "holder-016",
+    "priority_year": 1946,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0210"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 555,
+    "holder": "holder-019",
+    "priority_year": 1997,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0211"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 217,
+    "holder": "holder-047",
+    "priority_year": 1984,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0212"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 658,
+    "holder": "holder-017",
+    "priority_year": 1975,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0213"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 46,
+    "holder": "holder-014",
+    "priority_year": 1897,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0214"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 628,
+    "holder": "holder-020",
+    "priority_year": 1892,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0215"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 394,
+    "holder": "holder-063",
+    "priority_year": 1958,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0216"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 302,
+    "holder": "holder-086",
+    "priority_year": 1937,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0217"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 618,
+    "holder": "holder-016",
+    "priority_year": 1916,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0218"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 492,
+    "holder": "holder-019",
+    "priority_year": 1926,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0219"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 413,
+    "holder": "holder-024",
+    "priority_year": 1989,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0220"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 643,
+    "holder": "holder-031",
+    "priority_year": 1975,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0221"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 686,
+    "holder": "holder-062",
+    "priority_year": 1987,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0222"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 442,
+    "holder": "holder-036",
+    "priority_year": 1957,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0223"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 119,
+    "holder": "holder-046",
+    "priority_year": 1937,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0224"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 725,
+    "holder": "holder-071",
+    "priority_year": 1893,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0225"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 160,
+    "holder": "holder-034",
+    "priority_year": 1987,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0226"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 319,
+    "holder": "holder-084",
+    "priority_year": 1970,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0227"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 132,
+    "holder": "holder-060",
+    "priority_year": 1944,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0228"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 587,
+    "holder": "holder-061",
+    "priority_year": 1941,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0229"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 144,
+    "holder": "holder-023",
+    "priority_year": 1927,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0230"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 360,
+    "holder": "holder-012",
+    "priority_year": 1952,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0231"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 508,
+    "holder": "holder-002",
+    "priority_year": 1975,
+    "reservoir_id": "RES-08",
+    "right_id": "WR-0232"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 211,
+    "holder": "holder-056",
+    "priority_year": 1892,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0233"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 544,
+    "holder": "holder-073",
+    "priority_year": 1975,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0234"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 154,
+    "holder": "holder-069",
+    "priority_year": 1966,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0235"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 532,
+    "holder": "holder-085",
+    "priority_year": 1915,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0236"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 190,
+    "holder": "holder-073",
+    "priority_year": 1954,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0237"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 454,
+    "holder": "holder-041",
+    "priority_year": 1945,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0238"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 692,
+    "holder": "holder-034",
+    "priority_year": 1961,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0239"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 225,
+    "holder": "holder-043",
+    "priority_year": 1952,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0240"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 668,
+    "holder": "holder-079",
+    "priority_year": 1891,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0241"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 715,
+    "holder": "holder-069",
+    "priority_year": 1969,
+    "reservoir_id": "RES-07",
+    "right_id": "WR-0242"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 758,
+    "holder": "holder-065",
+    "priority_year": 1903,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0243"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 358,
+    "holder": "holder-049",
+    "priority_year": 1942,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0244"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 430,
+    "holder": "holder-012",
+    "priority_year": 1894,
+    "reservoir_id": "RES-02",
+    "right_id": "WR-0245"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 861,
+    "holder": "holder-022",
+    "priority_year": 1902,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0246"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 301,
+    "holder": "holder-051",
+    "priority_year": 1982,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0247"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 575,
+    "holder": "holder-018",
+    "priority_year": 1914,
+    "reservoir_id": "RES-06",
+    "right_id": "WR-0248"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 104,
+    "holder": "holder-028",
+    "priority_year": 1992,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0249"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 251,
+    "holder": "holder-053",
+    "priority_year": 1909,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0250"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 437,
+    "holder": "holder-036",
+    "priority_year": 1966,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0251"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 418,
+    "holder": "holder-040",
+    "priority_year": 1961,
+    "reservoir_id": "RES-01",
+    "right_id": "WR-0252"
+  },
+  {
+    "beneficial_use": "irrigation",
+    "daily_entitlement_af": 571,
+    "holder": "holder-085",
+    "priority_year": 1941,
+    "reservoir_id": "RES-03",
+    "right_id": "WR-0253"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 199,
+    "holder": "holder-057",
+    "priority_year": 1897,
+    "reservoir_id": "RES-04",
+    "right_id": "WR-0254"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 246,
+    "holder": "holder-064",
+    "priority_year": 1952,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0255"
+  },
+  {
+    "beneficial_use": "industrial",
+    "daily_entitlement_af": 724,
+    "holder": "holder-015",
+    "priority_year": 1939,
+    "reservoir_id": "RES-09",
+    "right_id": "WR-0256"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 422,
+    "holder": "holder-030",
+    "priority_year": 1961,
+    "reservoir_id": "RES-10",
+    "right_id": "WR-0257"
+  },
+  {
+    "beneficial_use": "stock",
+    "daily_entitlement_af": 263,
+    "holder": "holder-032",
+    "priority_year": 1925,
+    "reservoir_id": "RES-05",
+    "right_id": "WR-0258"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 284,
+    "holder": "holder-004",
+    "priority_year": 1959,
+    "reservoir_id": "RES-12",
+    "right_id": "WR-0259"
+  },
+  {
+    "beneficial_use": "municipal",
+    "daily_entitlement_af": 346,
+    "holder": "holder-088",
+    "priority_year": 1990,
+    "reservoir_id": "RES-11",
+    "right_id": "WR-0260"
+  }
+]

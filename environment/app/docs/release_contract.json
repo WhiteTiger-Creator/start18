@@ -1,0 +1,108 @@
+{
+  "cli": {
+    "fixed_paths": [
+      "/app/data/reservoir_register.json",
+      "/app/data/rights_register.json",
+      "/app/data/operating_policy.json"
+    ],
+    "input": "--input selects the gauge series only; default /app/data/gauge_readings.json",
+    "output_dir": "--output-dir selects the output directory; default /app/output"
+  },
+  "contract_version": "basin-release-v1",
+  "description": "Output contract for the reservoir release scheduler. Shapes, paths, field lists and sort orders only; no derivation rule lives here.",
+  "outputs": {
+    "curtailment_queue": {
+      "container": "jsonl",
+      "element_fields": [
+        "day",
+        "reservoir_id",
+        "right_id",
+        "shortfall_af",
+        "reason"
+      ],
+      "path": "/app/output/curtailment_queue.jsonl",
+      "reasons": [
+        "flood_operation",
+        "supply_short"
+      ],
+      "serialisation": "one compact JSON object per line, trailing newline",
+      "sort": "ascending by day, then reservoir_id, then right_id"
+    },
+    "release_schedule": {
+      "container": "array",
+      "element_fields": [
+        "reservoir_id",
+        "day",
+        "inflow_af",
+        "env_flow_af",
+        "rights_af",
+        "flood_af",
+        "total_release_af",
+        "closing_storage_af",
+        "outlet_bound"
+      ],
+      "path": "/app/output/release_schedule.json",
+      "serialisation": "JSON array, two-space indent, trailing newline",
+      "sort": "ascending by reservoir_id, then day"
+    },
+    "summary": {
+      "container": "object",
+      "field_types": {
+        "curtailment_count": "integer",
+        "effective_curtail_year": "integer",
+        "effective_flood_fraction": "integer",
+        "effective_horizon_days": "integer",
+        "effective_max_curtailments": "integer",
+        "outlet_bound_day_count": "integer",
+        "reading_count": "integer",
+        "recorded_curtailment_count": "integer",
+        "reservoir_count": "integer",
+        "right_count": "integer",
+        "schema_version": "string",
+        "scheduled_day_count": "integer",
+        "total_release_af": "integer",
+        "total_shortfall_af": "integer"
+      },
+      "path": "/app/output/summary.json",
+      "required_fields": [
+        "schema_version",
+        "reading_count",
+        "reservoir_count",
+        "right_count",
+        "scheduled_day_count",
+        "total_release_af",
+        "total_shortfall_af",
+        "curtailment_count",
+        "recorded_curtailment_count",
+        "outlet_bound_day_count",
+        "effective_horizon_days",
+        "effective_curtail_year",
+        "effective_flood_fraction",
+        "effective_max_curtailments"
+      ],
+      "serialisation": "JSON object, two-space indent, trailing newline"
+    }
+  },
+  "reconciled_inputs": {
+    "gauge_readings": {
+      "container": "array",
+      "path": "/app/data/gauge_readings.json",
+      "record_fields": [
+        "reading_id",
+        "reservoir_id",
+        "day",
+        "sensor",
+        "raw_inflow_af",
+        "corrected_inflow_af",
+        "quality"
+      ],
+      "serialisation": "JSON array, two-space indent, trailing newline",
+      "sort": "ascending by reservoir_id, then day, then reading_id"
+    }
+  },
+  "runtime_budget_seconds": 90,
+  "units": {
+    "day": "integer offset on the basin operating-season grid",
+    "volumes": "whole acre-feet"
+  }
+}

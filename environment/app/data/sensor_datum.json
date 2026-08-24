@@ -1,0 +1,18 @@
+[
+  {
+    "datum_offset_af": 0,
+    "sensor": "acoustic"
+  },
+  {
+    "datum_offset_af": -140,
+    "sensor": "pressure"
+  },
+  {
+    "datum_offset_af": 320,
+    "sensor": "float"
+  },
+  {
+    "datum_offset_af": -75,
+    "sensor": "radar"
+  }
+]

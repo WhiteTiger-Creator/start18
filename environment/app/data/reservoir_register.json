@@ -1,0 +1,110 @@
+[
+  {
+    "capacity_af": 787894,
+    "dead_storage_af": 63031,
+    "flood_pool_af": 677588,
+    "min_env_flow_af_day": 964,
+    "opening_storage_af": 421543,
+    "outlet_limit_af_day": 30335,
+    "reservoir_id": "RES-01"
+  },
+  {
+    "capacity_af": 181087,
+    "dead_storage_af": 14486,
+    "flood_pool_af": 155734,
+    "min_env_flow_af_day": 2949,
+    "opening_storage_af": 130253,
+    "outlet_limit_af_day": 23950,
+    "reservoir_id": "RES-02"
+  },
+  {
+    "capacity_af": 894130,
+    "dead_storage_af": 71530,
+    "flood_pool_af": 768951,
+    "min_env_flow_af_day": 1642,
+    "opening_storage_af": 383984,
+    "outlet_limit_af_day": 22908,
+    "reservoir_id": "RES-03"
+  },
+  {
+    "capacity_af": 525996,
+    "dead_storage_af": 42079,
+    "flood_pool_af": 452356,
+    "min_env_flow_af_day": 467,
+    "opening_storage_af": 335034,
+    "outlet_limit_af_day": 36159,
+    "reservoir_id": "RES-04"
+  },
+  {
+    "capacity_af": 812331,
+    "dead_storage_af": 64986,
+    "flood_pool_af": 698604,
+    "min_env_flow_af_day": 1687,
+    "opening_storage_af": 279841,
+    "outlet_limit_af_day": 28552,
+    "reservoir_id": "RES-05"
+  },
+  {
+    "capacity_af": 715849,
+    "dead_storage_af": 57267,
+    "flood_pool_af": 615630,
+    "min_env_flow_af_day": 2005,
+    "opening_storage_af": 505098,
+    "outlet_limit_af_day": 20100,
+    "reservoir_id": "RES-06"
+  },
+  {
+    "capacity_af": 267320,
+    "dead_storage_af": 21385,
+    "flood_pool_af": 229895,
+    "min_env_flow_af_day": 2584,
+    "opening_storage_af": 116860,
+    "outlet_limit_af_day": 29843,
+    "reservoir_id": "RES-07"
+  },
+  {
+    "capacity_af": 640955,
+    "dead_storage_af": 51276,
+    "flood_pool_af": 551221,
+    "min_env_flow_af_day": 2116,
+    "opening_storage_af": 228461,
+    "outlet_limit_af_day": 29071,
+    "reservoir_id": "RES-08"
+  },
+  {
+    "capacity_af": 238448,
+    "dead_storage_af": 19075,
+    "flood_pool_af": 205065,
+    "min_env_flow_af_day": 1353,
+    "opening_storage_af": 167054,
+    "outlet_limit_af_day": 33588,
+    "reservoir_id": "RES-09"
+  },
+  {
+    "capacity_af": 881420,
+    "dead_storage_af": 70513,
+    "flood_pool_af": 758021,
+    "min_env_flow_af_day": 884,
+    "opening_storage_af": 332221,
+    "outlet_limit_af_day": 30570,
+    "reservoir_id": "RES-10"
+  },
+  {
+    "capacity_af": 194106,
+    "dead_storage_af": 15528,
+    "flood_pool_af": 166931,
+    "min_env_flow_af_day": 1584,
+    "opening_storage_af": 74292,
+    "outlet_limit_af_day": 21371,
+    "reservoir_id": "RES-11"
+  },
+  {
+    "capacity_af": 190421,
+    "dead_storage_af": 15233,
+    "flood_pool_af": 163762,
+    "min_env_flow_af_day": 1820,
+    "opening_storage_af": 82862,
+    "outlet_limit_af_day": 17440,
+    "reservoir_id": "RES-12"
+  }
+]

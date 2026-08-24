@@ -1,0 +1,47 @@
+{
+  "alternate": {
+    "queue_digest": "241f89f912c56ad3734b4c200e253951fbb09a8af028c910bd13eb37bd833457",
+    "schedule_digest": "0221f990b5bdcb6bbe91e3fd25338ce72495f22c6e847f22ca80c336937f1fc8",
+    "summary": {
+      "curtailment_count": 5150,
+      "effective_curtail_year": 1960,
+      "effective_flood_fraction": 35,
+      "effective_horizon_days": 180,
+      "effective_max_curtailments": 2400,
+      "outlet_bound_day_count": 202,
+      "reading_count": 1930,
+      "recorded_curtailment_count": 2400,
+      "reservoir_count": 12,
+      "right_count": 260,
+      "scheduled_day_count": 2160,
+      "schema_version": "basin-release-v1",
+      "total_release_af": 29222776,
+      "total_shortfall_af": 2437759
+    }
+  },
+  "broken_scheduler_sha256": "4d86c3fa4c90ab809aa31678c5af9d2ceadddc3927588099706c95c59a206fb3",
+  "primary": {
+    "queue_digest": "b2b25ad9c8766d82e91134849c10e1091cf0544a8dfb383ceef5b015decd562b",
+    "schedule_digest": "83f6664b1724299d938e08f0e6ff368afdae9e7401a65187dda1161b5c8bbfbe",
+    "summary": {
+      "curtailment_count": 5454,
+      "effective_curtail_year": 1960,
+      "effective_flood_fraction": 35,
+      "effective_horizon_days": 180,
+      "effective_max_curtailments": 2400,
+      "outlet_bound_day_count": 64,
+      "reading_count": 1930,
+      "recorded_curtailment_count": 2400,
+      "reservoir_count": 12,
+      "right_count": 260,
+      "scheduled_day_count": 2160,
+      "schema_version": "basin-release-v1",
+      "total_release_af": 24475589,
+      "total_shortfall_af": 2535153
+    }
+  },
+  "recovered_reading_count": 1930,
+  "recovered_series_digest": "97b4b10d05b8ae9155e517cce946cd4287aa0e0c4b56490d991097bb0c30b3d0",
+  "rule_sources_digest": "7675e1f1880a05a57bad556864710bb5aa9100cbf6d70874ea70e9e6d9041c8f",
+  "shipped_truncated_digest": "9fa9b98e9594177a2ce324f8da7a3a851e365839536b7b09f54ade14d3b6b8fc"
+}

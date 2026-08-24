@@ -1,0 +1,8 @@
+{
+  "default": {
+    "curtail_below_year": 1960,
+    "flood_release_fraction_pct": 35,
+    "horizon_days": 180,
+    "max_curtailments": 2400
+  }
+}
