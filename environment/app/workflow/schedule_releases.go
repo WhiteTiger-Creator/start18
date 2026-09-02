@@ -105,8 +105,7 @@ func main() {
 	floodPct := pol.Default["flood_release_fraction_pct"]
 	maxCurtail := int(pol.Default["max_curtailments"])
 
-	// A suspect reading is dropped, and the day it covers drops out of the
-	// schedule with it.
+	// Inflow per reservoir-day, and the days this run passes over.
 	inflow := map[string]map[int]int64{}
 	skip := map[string]map[int]bool{}
 	for _, r := range readings {
@@ -155,7 +154,7 @@ func main() {
 			}
 			room := res.OutletLimitAF
 
-			// The flood release is taken off the storage the day opened with.
+			// Flood release for the day.
 			var flood int64
 			if opening > res.FloodPoolAF {
 				flood = ((opening - res.FloodPoolAF) * floodPct) / 100
@@ -169,9 +168,7 @@ func main() {
 				room -= flood
 			}
 
-			// The appropriations are served first and share what is there in
-			// proportion to their entitlements; the environmental minimum comes out of
-			// whatever is left over afterwards.
+			// Allocation of the day's water across the outlet's claims.
 			var demand int64
 			for _, w := range byRes[res.ReservoirID] {
 				demand += w.DailyAF

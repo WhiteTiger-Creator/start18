@@ -6,7 +6,8 @@
       "/app/data/operating_policy.json"
     ],
     "input": "--input selects the gauge series only; default /app/data/gauge_readings.json",
-    "output_dir": "--output-dir selects the output directory; default /app/output"
+    "output_dir": "--output-dir selects the output directory; default /app/output",
+    "output_dir_handling": "the run clears what an earlier run left in the output directory and writes its own three files there; the directory itself is not removed and recreated, since the run does not own the path it writes into"
   },
   "contract_version": "basin-release-v1",
   "description": "Output contract for the reservoir release scheduler. Shapes, paths, field lists and sort orders only; no derivation rule lives here.",
@@ -58,8 +59,8 @@
         "recorded_curtailment_count": "integer",
         "reservoir_count": "integer",
         "right_count": "integer",
-        "schema_version": "string",
         "scheduled_day_count": "integer",
+        "schema_version": "string",
         "total_release_af": "integer",
         "total_shortfall_af": "integer"
       },
@@ -100,6 +101,7 @@
       "sort": "ascending by reservoir_id, then day, then reading_id"
     }
   },
+  "runtime_budget_note": "guidance on the scale a run is expected to handle, not a graded ceiling: the verifier bounds its own run rather than timing this one",
   "runtime_budget_seconds": 90,
   "units": {
     "day": "integer offset on the basin operating-season grid",

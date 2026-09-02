@@ -421,6 +421,103 @@ def test_the_curtailment_cap_truncates_the_record_but_not_the_totals():
 # --------------------------------------------------------------------------
 # Contract, budget, determinism and isolation
 # --------------------------------------------------------------------------
+def test_the_artifacts_are_serialised_exactly_as_the_contract_states(primary_outputs):
+    """Read off the raw bytes, which every other check throws away by parsing.
+
+    The contract fixes a form for all four documents and nothing here looked at
+    one, so a run emitting the summary compactly, or the queue with an indent,
+    matched every sealed digest.
+    """
+    out_dir = primary_outputs[0]
+    spec = SPEC["outputs"]
+    for name, section in (("summary.json", "summary"),
+                          ("release_schedule.json", "release_schedule")):
+        raw = (out_dir / name).read_text(encoding="utf-8")
+        stated = spec[section]["serialisation"]
+        assert "two-space indent" in stated and "trailing newline" in stated, stated
+        assert raw.endswith("\n") and not raw.endswith("\n\n"), name
+        assert raw == json.dumps(json.loads(raw), indent=2) + "\n", (
+            f"{name} is not the contract's two-space indent")
+
+    raw = (out_dir / "curtailment_queue.jsonl").read_text(encoding="utf-8")
+    assert "compact JSON object per line" in spec["curtailment_queue"]["serialisation"]
+    assert raw == "" or raw.endswith("\n")
+    for line in raw.splitlines():
+        assert line.strip(), "the queue carries a blank line"
+        assert line == json.dumps(json.loads(line), separators=(",", ":")), (
+            "a queue line is not compact JSON")
+
+    # the rebuilt series is a graded artifact too, and carries its own rule
+    raw = SERIES_PATH.read_text(encoding="utf-8")
+    stated = SPEC["reconciled_inputs"]["gauge_readings"]["serialisation"]
+    assert "two-space indent" in stated and "trailing newline" in stated, stated
+    assert raw.endswith("\n") and not raw.endswith("\n\n")
+    assert raw == json.dumps(json.loads(raw), indent=2) + "\n", (
+        "the rebuilt gauge series is not the contract's two-space indent")
+
+
+def test_each_policy_field_changes_the_behaviour_it_governs():
+    """Not just the figure the summary echoes back.
+
+    The probe beside this one reads the four effective_* fields, which an engine
+    could echo from the file while still allocating on hardcoded constants. Each
+    field is moved here on its own and checked against what the change implies
+    for the schedule itself.
+    """
+    saved = POLICY_PATH.read_text(encoding="utf-8")
+    shipped = json.loads(saved)["default"]
+    try:
+        # horizon: the schedule covers exactly the days the policy allows
+        _write_json(POLICY_PATH, {"default": dict(shipped, horizon_days=12)})
+        _, summary, schedule, _ = _run_pipeline()
+        days = {row["day"] for row in schedule}
+        assert days and max(days) < 12, (
+            f"the schedule runs to day {max(days)} under a 12-day horizon")
+        assert summary["effective_horizon_days"] == 12
+
+        # flood fraction: doubling it cannot release less on any day
+        _write_json(POLICY_PATH, {"default": dict(shipped, flood_release_fraction_pct=0)})
+        _, _, none_flood, _ = _run_pipeline()
+        _write_json(POLICY_PATH, {"default": dict(
+            shipped, flood_release_fraction_pct=min(100, shipped["flood_release_fraction_pct"] * 2))})
+        _, _, more_flood, _ = _run_pipeline()
+        zero = {(r["reservoir_id"], r["day"]): r["flood_af"] for r in none_flood}
+        assert set(zero.values()) == {0}, (
+            "a zero flood fraction still released flood water, so the fraction is a constant")
+        raised = [r for r in more_flood if r["flood_af"] > 0]
+        assert raised, "doubling the flood fraction released no flood water anywhere"
+
+        # curtailment cap: it binds on the queue
+        _write_json(POLICY_PATH, {"default": dict(shipped, max_curtailments=3)})
+        _, summary, _, queue = _run_pipeline()
+        assert len(queue) <= 3, f"the cap of 3 admitted {len(queue)} curtailments"
+        assert summary["effective_max_curtailments"] == 3
+
+        # priority year: #BAS-8196 uses it to choose the reason a curtailment
+        # carries, so moving it either side of every right on the register has to
+        # move the labels rather than the records
+        # a right counts as junior where its priority year is at or after the
+        # policy's, so a year before every right on the register makes them all
+        # junior and one after it makes them all senior
+        _write_json(POLICY_PATH, {"default": dict(shipped, curtail_below_year=1800)})
+        _, _, _, junior = _run_pipeline()
+        _write_json(POLICY_PATH, {"default": dict(shipped, curtail_below_year=2100)})
+        _, _, _, senior = _run_pipeline()
+        assert senior and junior, "no curtailment is raised either way"
+        assert {r["reason"] for r in senior} == {"supply_short"}, (
+            "with every right senior to the policy year a curtailment still read "
+            "flood_operation, so the year is not being read from the policy")
+        assert "flood_operation" in {r["reason"] for r in junior}, (
+            "with every right junior to the policy year no curtailment read "
+            "flood_operation")
+        assert {(r["day"], r["reservoir_id"], r["right_id"]) for r in senior} == \
+            {(r["day"], r["reservoir_id"], r["right_id"]) for r in junior}, (
+            "the priority year changed which rights were curtailed, not just the "
+            "reason each one carries")
+    finally:
+        POLICY_PATH.write_text(saved, encoding="utf-8")
+
+
 def test_policy_path_actually_influences_the_output():
     """The policy is resolved from its fixed path, not inlined as constants."""
     saved = POLICY_PATH.read_text(encoding="utf-8")
@@ -468,10 +565,19 @@ def test_no_argument_run_writes_to_the_documented_defaults(primary_outputs):
     """
     binary = _build(WORKFLOW_PATH)
     _publish_inputs()
+    # /app is root-owned, so the run cannot replace this directory -- only empty
+    # it, which is what the instruction and the contract ask for. The contents
+    # are cleared here for the same reason.
     default_out = Path("/app/output")
-    shutil.rmtree(default_out, ignore_errors=True)
     default_out.mkdir(parents=True, exist_ok=True)
+    for stale in sorted(default_out.iterdir()):
+        stale.unlink() if stale.is_file() or stale.is_symlink() else shutil.rmtree(stale)
     os.chmod(default_out, 0o777)
+    # something for the run to clear, so the rule is exercised and not assumed
+    (default_out / "left_behind.json").write_text("{}\n", encoding="utf-8")
+    os.chmod(default_out / "left_behind.json", 0o666)
+    (default_out / "scratch").mkdir()
+    os.chmod(default_out / "scratch", 0o777)
     result = _run_agent([binary], cwd=_candidate_dir())
     assert result.returncode == 0, result.stderr
     assert sorted(q.name for q in default_out.iterdir()) == ['curtailment_queue.jsonl', 'release_schedule.json', 'summary.json']
@@ -479,23 +585,6 @@ def test_no_argument_run_writes_to_the_documented_defaults(primary_outputs):
     assert _load_json(default_out / "summary.json") == summary
     assert _digest(_load_json(default_out / "release_schedule.json")) == _digest(doc)
     assert _digest(_load_jsonl(default_out / "curtailment_queue.jsonl")) == _digest(queue)
-
-
-def test_the_budget_is_enforced_by_killing_an_overrunning_run(primary_outputs):
-    """The budget is enforced, and not by timing the grading machine.
-
-    Every candidate run is executed with the contract's published budget as its
-    hard timeout, so a run that overruns is killed and the suite fails. Nothing
-    compares a measured elapsed time against a threshold.
-    """
-    assert HARD_TIMEOUT_SEC == int(RUNTIME_BUDGET_SEC)
-    assert primary_outputs[1]["scheduled_day_count"] > 0, "the graded run did not complete"
-
-
-
-def test_runtime_budget_is_stated_in_the_contract():
-    """The budget enforced above is the one the contract publishes."""
-    assert int(SPEC["runtime_budget_seconds"]) == int(RUNTIME_BUDGET_SEC)
 
 
 def test_submitted_program_runs_unprivileged_and_cannot_write_reward(tmp_path):
