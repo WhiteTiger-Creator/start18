@@ -4,161 +4,157 @@ How the release scheduler is *meant* to behave -- the recovery of the truncated 
 reading the basin office has marked suspect contributes, in what order the appropriations are
 served, where the environmental minimum sits against them, how a flood release is sized and what
 the curtailment record carries -- was settled incrementally by the basin board, and those decisions
-live in the review entries below, not in any single summary. Several stages deliberately DEVIATE
-from the intuitive reading: a suspect reading is carried as zero inflow rather than dropping its
-day, the appropriations are served strictly by priority rather than prorated, the environmental
-minimum is served ahead of every right rather than out of the remainder, and the flood release is
-sized on the storage as it stands after the day's inflow. The February draft proposals were
-revisited during the 2026-05 operations review and several were reversed; where a draft or interim
-conflicts with a later decision, the later dated decision governs. `/app/docs/release_contract.json`
-is the output contract only.
+live in the review entries below, not in any single summary. Several stages deliberately depart from the intuitive reading, and which ones they are is settled in the entries below rather than here. The February draft proposals were
+An on-call engineer signed off a routine observation. A batch retried once after a transient timeout and completed on the second pass. Nothing here bears on engine behaviour.
+A reviewer on shift logged a routine observation. Two accounts showed a same-day transfer the export had not yet picked up.
+A weekly review carried forward a routine observation. Late inputs arrived from one feed and were loaded before the cut. No action was carried forward.
 
 
-- 2026-02-20: Watermaster on duty logged a routine observation for the snowpack model feed during review window 1009. Stage drift reviewed; no operating change requested.
+- 2026-02-20: The platform team recorded a routine observation. Late inputs arrived from one feed and were loaded before the cut. No action was carried forward.
 
-- 2026-02-06: Watermaster on duty logged a routine observation for the telemetry relay during review window 1007. Stage drift reviewed; no operating change requested.
+- 2026-02-06: The platform team spot-checked a routine observation. One record appeared twice in the export after a mid-cycle correction.
 
 > **Recovery draft proposal (2026-02-06 - #BAS-8020)** Rosa: rebuild the truncated gauge series by concatenating the pre-migration snapshot with the telemetry journal and keeping the last row seen for each reading; a restored reading is re-read from the snapshot *(Superseded -- reversed in the 2026-05 operations review.)*
 
-- 2026-02-13: Operations review of the canal headworks in window 1012 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-02-13: A shift handover opened a query on a routine observation. The downstream vendor confirmed receipt inside the agreed window. Nothing here bears on engine behaviour.
 
 > **Recovery draft proposal (2026-02-13 - #BAS-8026)** Anders: the sensor's datum offset is SUBTRACTED from the raw stage, the offset being the amount by which the family reads high *(Superseded -- reversed in the 2026-05 operations review.)*
 
-- 2026-02-26: Basin engineer noted rejected telemetry frames from the canal headworks in window 1019. Raised with the district operator; the release parameters were not touched.
+- 2026-02-26: The platform team logged a routine observation. One record appeared twice in the export after a mid-cycle correction. No action was carried forward.
 
-- 2026-02-10: Operations review of the snowpack model feed in window 1018 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-02-10: A stand-up note recorded a routine observation. The count sat a little above the running mean, entirely from estimated inputs. Filed for the record.
 
 > **Recovery draft proposal (2026-02-19 - #BAS-8032)** Marek: a reading the basin office has marked suspect is dropped, and the day it covers drops out of the schedule with it *(Superseded -- reversed in the 2026-05 operations review.)*
 
-- 2026-02-26: Operations review of the canal headworks in window 1038 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-02-26: The audit lead spot-checked a routine observation. A duplicate order was cancelled at source and never reached the run. No action was carried forward.
 
-- 2026-02-16: Watermaster on duty logged a routine observation for the snowpack model feed during review window 1027. Stage drift reviewed; no operating change requested.
+- 2026-02-16: The exceptions queue owner raised and closed a routine observation. The overnight window ran long behind an unrelated platform patch.
 
-- 2026-02-06: Basin engineer noted rejected telemetry frames from the watermaster's accounting service in window 1030. Raised with the district operator; the release parameters were not touched.
+- 2026-02-06: The reconciliation desk logged a routine observation. A query about a prior-period entry was answered from the published schedule.
 
-- 2026-02-27: Watermaster on duty logged a routine observation for the telemetry relay during review window 1027. Stage drift reviewed; no operating change requested.
+- 2026-02-27: The reconciliation desk filed a routine observation. One record appeared twice in the export after a mid-cycle correction.
 
-- 2026-02-19: Basin engineer noted rejected telemetry frames from the telemetry relay in window 1023. Raised with the district operator; the release parameters were not touched.
+- 2026-02-19: An on-call engineer recorded a routine observation. A query about a prior-period entry was answered from the published schedule. Closed with no parameter change.
 
-- 2026-02-01: Operations review of the watermaster's accounting service in window 1027 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-02-01: A reviewer on shift noted a routine observation. An operator asked whether a credit had posted; it had, in the preceding period. Referred to the dated decisions and closed.
 
-- 2026-02-03: Watermaster on duty logged a routine observation for the snowpack model feed during review window 1031. Stage drift reviewed; no operating change requested.
+- 2026-02-03: The reconciliation desk carried forward a routine observation. Two accounts showed a same-day transfer the export had not yet picked up.
 
-- 2026-02-05: Operations stand-up recorded a routine note against the snowpack model feed for window 1027. The diversion backlog was cleared with no order raised.
+- 2026-02-05: A weekly review recorded a routine observation. Storage on the staging host was extended after the export outgrew its allocation.
 
-- 2026-02-21: Operations review of the telemetry relay in window 1025 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-02-21: The audit lead spot-checked a routine observation. The variance sat inside tolerance and no adjustment was raised. The desk confirmed no downstream impact.
 
-- 2026-02-25: Watermaster on duty logged a routine observation for the watermaster's accounting service during review window 1033. Stage drift reviewed; no operating change requested.
+- 2026-02-25: The audit lead recorded a routine observation. The downstream vendor confirmed receipt inside the agreed window. The thread was archived after review.
 
-- 2026-02-02: Watermaster on duty logged a routine observation for the telemetry relay during review window 1039. Stage drift reviewed; no operating change requested.
+- 2026-02-02: An on-call engineer filed a routine observation. An operator asked whether a credit had posted; it had, in the preceding period. The desk confirmed no downstream impact.
 
-- 2026-02-14: Watermaster on duty logged a routine observation for the canal headworks during review window 1031. Stage drift reviewed; no operating change requested.
+- 2026-02-14: The audit lead carried forward a routine observation. Dashboard tiles lagged the refresh; traced to cache staleness rather than the engine. Filed for the record.
 
-- 2026-02-17: Watermaster on duty logged a routine observation for the snowpack model feed during review window 1037. Stage drift reviewed; no operating change requested.
+- 2026-02-17: The controls team signed off a routine observation. Two accounts showed a same-day transfer the export had not yet picked up.
 
-- 2026-02-24: Basin engineer noted rejected telemetry frames from the spillway gate controller in window 1036. Raised with the district operator; the release parameters were not touched.
+- 2026-02-24: The platform team reviewed a routine observation. A typo in a reference record was corrected before the run started. The desk confirmed no downstream impact.
 
 > **Interim decision (2026-03-05 - #BAS-8038)** Priya: where the day cannot meet the appropriations in full, the shortage is prorated across every right on the reservoir in proportion to its entitlement *(Revised -- see the 2026-05 operations review.)*
 
-- 2026-03-01: Basin engineer noted rejected telemetry frames from the watermaster's accounting service in window 1054. Raised with the district operator; the release parameters were not touched.
+- 2026-03-01: The operations desk reviewed a routine observation. A duplicate order was cancelled at source and never reached the run. Referred to the dated decisions and closed.
 
-- 2026-03-24: Operations stand-up recorded a routine note against the watermaster's accounting service for window 1051. The diversion backlog was cleared with no order raised.
+- 2026-03-24: A stand-up note spot-checked a routine observation. A query about a prior-period entry was answered from the published schedule. Filed for the record.
 
-- 2026-03-10: Basin engineer noted rejected telemetry frames from the spillway gate controller in window 1048. Raised with the district operator; the release parameters were not touched.
+- 2026-03-10: A shift handover noted a routine observation. A batch retried once after a transient timeout and completed on the second pass.
 
-- 2026-03-11: Basin engineer noted rejected telemetry frames from the spillway gate controller in window 1058. Raised with the district operator; the release parameters were not touched.
+- 2026-03-11: An on-call engineer signed off a routine observation. A batch retried once after a transient timeout and completed on the second pass. The desk confirmed no downstream impact.
 
-- 2026-03-09: Watermaster on duty logged a routine observation for the telemetry relay during review window 1044. Stage drift reviewed; no operating change requested.
+- 2026-03-09: A reviewer on shift logged a routine observation. One record appeared twice in the export after a mid-cycle correction. The thread was archived after review.
 
-- 2026-03-13: Watermaster on duty logged a routine observation for the watermaster's accounting service during review window 1053. Stage drift reviewed; no operating change requested.
+- 2026-03-13: The duty analyst opened a query on a routine observation. A typo in a reference record was corrected before the run started.
 
-- 2026-03-04: Operations review of the spillway gate controller in window 1057 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-03-04: The audit lead signed off a routine observation. A batch retried once after a transient timeout and completed on the second pass.
 
-- 2026-03-17: Operations review of the spillway gate controller in window 1054 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-03-17: A stand-up note signed off a routine observation. The downstream vendor confirmed receipt inside the agreed window.
 
-- 2026-03-12: Operations review of the canal headworks in window 1049 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-03-12: A shift handover logged a routine observation. A batch retried once after a transient timeout and completed on the second pass.
 
-- 2026-03-09: Watermaster on duty logged a routine observation for the snowpack model feed during review window 1052. Stage drift reviewed; no operating change requested.
+- 2026-03-09: A shift handover filed a routine observation. A question raised on the floor was withdrawn once the entry was reread.
 
-- 2026-03-14: Basin engineer noted rejected telemetry frames from the watermaster's accounting service in window 1055. Raised with the district operator; the release parameters were not touched.
+- 2026-03-14: The operations desk opened a query on a routine observation. A duplicate order was cancelled at source and never reached the run. Nothing here bears on engine behaviour.
 
-- 2026-03-15: Operations review of the snowpack model feed in window 1043 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-03-15: The audit lead opened a query on a routine observation. The variance sat inside tolerance and no adjustment was raised. Nothing here bears on engine behaviour.
 
 > **Interim decision (2026-03-11 - #BAS-8044)** Anders: the environmental minimum is served out of whatever remains once the appropriations have been met, the rights having the senior claim on the outlet *(Revised -- see the 2026-05 operations review.)*
 
-- 2026-03-21: Operations review of the watermaster's accounting service in window 1072 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-03-21: The controls team filed a routine observation. The count sat a little above the running mean, entirely from estimated inputs. Referred to the dated decisions and closed.
 
-- 2026-03-22: Watermaster on duty logged a routine observation for the snowpack model feed during review window 1068. Stage drift reviewed; no operating change requested.
+- 2026-03-22: The operations desk signed off a routine observation. One record appeared twice in the export after a mid-cycle correction. No follow-up was requested.
 
-- 2026-03-23: Operations review of the watermaster's accounting service in window 1073 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-03-23: The controls team signed off a routine observation. A question raised on the floor was withdrawn once the entry was reread.
 
-- 2026-03-04: Operations review of the canal headworks in window 1077 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-03-04: The operations desk recorded a routine observation. A duplicate order was cancelled at source and never reached the run.
 
-- 2026-03-06: Operations stand-up recorded a routine note against the watermaster's accounting service for window 1071. The diversion backlog was cleared with no order raised.
+- 2026-03-06: An on-call engineer noted a routine observation. A duplicate order was cancelled at source and never reached the run. No action was carried forward.
 
-- 2026-03-13: Basin engineer noted rejected telemetry frames from the snowpack model feed in window 1063. Raised with the district operator; the release parameters were not touched.
+- 2026-03-13: The duty analyst logged a routine observation. One record appeared twice in the export after a mid-cycle correction. Filed for the record.
 
-- 2026-03-13: Watermaster on duty logged a routine observation for the spillway gate controller during review window 1060. Stage drift reviewed; no operating change requested.
+- 2026-03-13: The controls team recorded a routine observation. A batch retried once after a transient timeout and completed on the second pass. The thread was archived after review.
 
-- 2026-03-23: Operations stand-up recorded a routine note against the canal headworks for window 1068. The diversion backlog was cleared with no order raised.
+- 2026-03-23: An on-call engineer recorded a routine observation. A typo in a reference record was corrected before the run started.
 
-- 2026-03-26: Operations stand-up recorded a routine note against the spillway gate controller for window 1076. The diversion backlog was cleared with no order raised.
+- 2026-03-26: The exceptions queue owner reviewed a routine observation. A query about a prior-period entry was answered from the published schedule. Nothing here bears on engine behaviour.
 
-- 2026-03-25: Basin engineer noted rejected telemetry frames from the spillway gate controller in window 1060. Raised with the district operator; the release parameters were not touched.
+- 2026-03-25: The audit lead noted a routine observation. Nightly reconciliation matched exactly and the file was released without comment.
 
-- 2026-03-19: Watermaster on duty logged a routine observation for the telemetry relay during review window 1072. Stage drift reviewed; no operating change requested.
+- 2026-03-19: A reviewer on shift signed off a routine observation. An operator asked whether a credit had posted; it had, in the preceding period. Closed with no parameter change.
 
-- 2026-03-19: Operations review of the spillway gate controller in window 1074 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-03-19: The audit lead reviewed a routine observation. Late inputs arrived from one feed and were loaded before the cut. Nothing here bears on engine behaviour.
 
-- 2026-03-18: Operations stand-up recorded a routine note against the canal headworks for window 1075. The diversion backlog was cleared with no order raised.
+- 2026-03-18: The reconciliation desk spot-checked a routine observation. An operator asked whether a credit had posted; it had, in the preceding period. No action was carried forward.
 
-- 2026-03-20: Operations stand-up recorded a routine note against the watermaster's accounting service for window 1071. The diversion backlog was cleared with no order raised.
+- 2026-03-20: The platform team reviewed a routine observation. A batch retried once after a transient timeout and completed on the second pass. No action was carried forward.
 
-- 2026-04-17: Basin engineer noted rejected telemetry frames from the spillway gate controller in window 1097. Raised with the district operator; the release parameters were not touched.
+- 2026-04-17: The audit lead raised and closed a routine observation. Storage on the staging host was extended after the export outgrew its allocation. Referred to the dated decisions and closed.
 
-- 2026-04-20: Operations stand-up recorded a routine note against the snowpack model feed for window 1085. The diversion backlog was cleared with no order raised.
+- 2026-04-20: A weekly review opened a query on a routine observation. A batch retried once after a transient timeout and completed on the second pass.
 
-- 2026-04-25: Watermaster on duty logged a routine observation for the canal headworks during review window 1115. Stage drift reviewed; no operating change requested.
+- 2026-04-25: A weekly review filed a routine observation. Nightly reconciliation matched exactly and the file was released without comment.
 
-- 2026-04-17: Operations review of the telemetry relay in window 1103 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-04-17: The controls team reviewed a routine observation. Late inputs arrived from one feed and were loaded before the cut. Nothing here bears on engine behaviour.
 
-- 2026-04-12: Operations stand-up recorded a routine note against the canal headworks for window 1113. The diversion backlog was cleared with no order raised.
+- 2026-04-12: The duty analyst raised and closed a routine observation. The downstream vendor confirmed receipt inside the agreed window. The desk confirmed no downstream impact.
 
-- 2026-04-13: Basin engineer noted rejected telemetry frames from the snowpack model feed in window 1110. Raised with the district operator; the release parameters were not touched.
+- 2026-04-13: The audit lead raised and closed a routine observation. One record appeared twice in the export after a mid-cycle correction.
 
-- 2026-04-18: Basin engineer noted rejected telemetry frames from the snowpack model feed in window 1097. Raised with the district operator; the release parameters were not touched.
+- 2026-04-18: A reviewer on shift opened a query on a routine observation. Nightly reconciliation matched exactly and the file was released without comment.
 
-- 2026-04-25: Operations stand-up recorded a routine note against the watermaster's accounting service for window 1115. The diversion backlog was cleared with no order raised.
+- 2026-04-25: The duty analyst reviewed a routine observation. An operator asked whether a credit had posted; it had, in the preceding period. Nothing here bears on engine behaviour.
 
-- 2026-04-03: Watermaster on duty logged a routine observation for the snowpack model feed during review window 1096. Stage drift reviewed; no operating change requested.
+- 2026-04-03: The exceptions queue owner logged a routine observation. One record appeared twice in the export after a mid-cycle correction. No follow-up was requested.
 
-- 2026-04-09: Operations stand-up recorded a routine note against the snowpack model feed for window 1086. The diversion backlog was cleared with no order raised.
+- 2026-04-09: A reviewer on shift recorded a routine observation. Dashboard tiles lagged the refresh; traced to cache staleness rather than the engine.
 
-- 2026-04-23: Basin engineer noted rejected telemetry frames from the spillway gate controller in window 1106. Raised with the district operator; the release parameters were not touched.
+- 2026-04-23: The operations desk signed off a routine observation. Dashboard tiles lagged the refresh; traced to cache staleness rather than the engine. The thread was archived after review.
 
-- 2026-04-27: Operations review of the snowpack model feed in window 1120 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-04-27: The duty analyst recorded a routine observation. The overnight window ran long behind an unrelated platform patch.
 
-- 2026-04-06: Operations review of the telemetry relay in window 1107 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-04-06: The reconciliation desk opened a query on a routine observation. The overnight window ran long behind an unrelated platform patch.
 
-- 2026-04-10: Operations stand-up recorded a routine note against the telemetry relay for window 1089. The diversion backlog was cleared with no order raised.
+- 2026-04-10: The audit lead opened a query on a routine observation. The count sat a little above the running mean, entirely from estimated inputs. No follow-up was requested.
 
-- 2026-04-23: Basin engineer noted rejected telemetry frames from the spillway gate controller in window 1113. Raised with the district operator; the release parameters were not touched.
+- 2026-04-23: The platform team logged a routine observation. Dashboard tiles lagged the refresh; traced to cache staleness rather than the engine.
 
-- 2026-04-03: Basin engineer noted rejected telemetry frames from the snowpack model feed in window 1116. Raised with the district operator; the release parameters were not touched.
+- 2026-04-03: The platform team noted a routine observation. The variance sat inside tolerance and no adjustment was raised. Closed with no parameter change.
 
-- 2026-04-08: Operations stand-up recorded a routine note against the snowpack model feed for window 1119. The diversion backlog was cleared with no order raised.
+- 2026-04-08: The controls team reviewed a routine observation. Two accounts showed a same-day transfer the export had not yet picked up. Nothing here bears on engine behaviour.
 
-- 2026-04-06: Operations stand-up recorded a routine note against the spillway gate controller for window 1120. The diversion backlog was cleared with no order raised.
+- 2026-04-06: A shift handover spot-checked a routine observation. The overnight window ran long behind an unrelated platform patch.
 
-- 2026-04-19: Watermaster on duty logged a routine observation for the snowpack model feed during review window 1110. Stage drift reviewed; no operating change requested.
+- 2026-04-19: The reconciliation desk logged a routine observation. Storage on the staging host was extended after the export outgrew its allocation. The thread was archived after review.
 
-- 2026-04-09: Basin engineer noted rejected telemetry frames from the telemetry relay in window 1102. Raised with the district operator; the release parameters were not touched.
+- 2026-04-09: The duty analyst raised and closed a routine observation. A query about a prior-period entry was answered from the published schedule.
 
-- 2026-04-02: Watermaster on duty logged a routine observation for the snowpack model feed during review window 1109. Stage drift reviewed; no operating change requested.
+- 2026-04-02: The operations desk reviewed a routine observation. The overnight window ran long behind an unrelated platform patch. No action was carried forward.
 
-- 2026-04-06: Basin engineer noted rejected telemetry frames from the telemetry relay in window 1106. Raised with the district operator; the release parameters were not touched.
+- 2026-04-06: A stand-up note reviewed a routine observation. A question raised on the floor was withdrawn once the entry was reread.
 
-- 2026-05-27: Operations review of the telemetry relay in window 1124 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-05-27: A shift handover raised and closed a routine observation. The downstream vendor confirmed receipt inside the agreed window.
 
 > **Governance decision (2026-05-05 - #BAS-8150)** Priya: Input paths, final. The reservoir register, the rights register and the operating policy are always read from their fixed absolute paths under /app/data; `--input` selects the gauge series only. Both `--input` and `--output-dir` keep their documented defaults.
 
@@ -180,90 +176,90 @@ is the output contract only.
 
 > **Governance decision (2026-05-27 - #BAS-8198)** Lena: Release accounting, final. No reservoir releases more than its outlet limit on a day, nor draws its storage below the dead pool, and inflow above capacity spills unrecorded before any release is set. The schedule is emitted by reservoir and then day; the curtailment queue by day, then reservoir, then right id, and everything past the policy's max_curtailments is dropped from the record though it still counts in the totals.
 
-- 2026-05-09: Operations stand-up recorded a routine note against the telemetry relay for window 1151. The diversion backlog was cleared with no order raised.
+- 2026-05-09: The duty analyst noted a routine observation. The downstream vendor confirmed receipt inside the agreed window.
 
-- 2026-05-07: Basin engineer noted rejected telemetry frames from the spillway gate controller in window 1150. Raised with the district operator; the release parameters were not touched.
+- 2026-05-07: The duty analyst carried forward a routine observation. A duplicate order was cancelled at source and never reached the run. The thread was archived after review.
 
-- 2026-05-21: Operations stand-up recorded a routine note against the canal headworks for window 1140. The diversion backlog was cleared with no order raised.
+- 2026-05-21: A stand-up note reviewed a routine observation. The downstream vendor confirmed receipt inside the agreed window. No follow-up was requested.
 
-- 2026-05-17: Operations review of the spillway gate controller in window 1130 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-05-17: The platform team carried forward a routine observation. One record appeared twice in the export after a mid-cycle correction. The desk confirmed no downstream impact.
 
-- 2026-05-17: Basin engineer noted rejected telemetry frames from the spillway gate controller in window 1142. Raised with the district operator; the release parameters were not touched.
+- 2026-05-17: A weekly review raised and closed a routine observation. Late inputs arrived from one feed and were loaded before the cut. Filed for the record.
 
-- 2026-05-08: Basin engineer noted rejected telemetry frames from the watermaster's accounting service in window 1139. Raised with the district operator; the release parameters were not touched.
+- 2026-05-08: The platform team reviewed a routine observation. Late inputs arrived from one feed and were loaded before the cut. No follow-up was requested.
 
-- 2026-05-23: Operations review of the telemetry relay in window 1136 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-05-23: An on-call engineer carried forward a routine observation. The downstream vendor confirmed receipt inside the agreed window. Referred to the dated decisions and closed.
 
-- 2026-05-14: Basin engineer noted rejected telemetry frames from the snowpack model feed in window 1145. Raised with the district operator; the release parameters were not touched.
+- 2026-05-14: An on-call engineer raised and closed a routine observation. A question raised on the floor was withdrawn once the entry was reread. No follow-up was requested.
 
-- 2026-05-23: Operations review of the snowpack model feed in window 1135 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-05-23: The controls team recorded a routine observation. The count sat a little above the running mean, entirely from estimated inputs. Closed with no parameter change.
 
-- 2026-05-20: Operations stand-up recorded a routine note against the canal headworks for window 1130. The diversion backlog was cleared with no order raised.
+- 2026-05-20: The exceptions queue owner raised and closed a routine observation. A duplicate order was cancelled at source and never reached the run.
 
-- 2026-05-19: Operations review of the spillway gate controller in window 1159 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-05-19: A reviewer on shift noted a routine observation. A batch retried once after a transient timeout and completed on the second pass.
 
-- 2026-05-03: Basin engineer noted rejected telemetry frames from the spillway gate controller in window 1158. Raised with the district operator; the release parameters were not touched.
+- 2026-05-03: The duty analyst carried forward a routine observation. A question raised on the floor was withdrawn once the entry was reread. The desk confirmed no downstream impact.
 
-- 2026-05-21: Watermaster on duty logged a routine observation for the snowpack model feed during review window 1136. Stage drift reviewed; no operating change requested.
+- 2026-05-21: An on-call engineer noted a routine observation. A question raised on the floor was withdrawn once the entry was reread. The desk confirmed no downstream impact.
 
-- 2026-05-20: Basin engineer noted rejected telemetry frames from the spillway gate controller in window 1158. Raised with the district operator; the release parameters were not touched.
+- 2026-05-20: The exceptions queue owner raised and closed a routine observation. A question raised on the floor was withdrawn once the entry was reread.
 
-- 2026-05-14: Operations stand-up recorded a routine note against the snowpack model feed for window 1153. The diversion backlog was cleared with no order raised.
+- 2026-05-14: The exceptions queue owner raised and closed a routine observation. One record appeared twice in the export after a mid-cycle correction. Nothing here bears on engine behaviour.
 
-- 2026-05-16: Basin engineer noted rejected telemetry frames from the canal headworks in window 1130. Raised with the district operator; the release parameters were not touched.
+- 2026-05-16: A reviewer on shift carried forward a routine observation. A question raised on the floor was withdrawn once the entry was reread. The desk confirmed no downstream impact.
 
-- 2026-05-04: Basin engineer noted rejected telemetry frames from the spillway gate controller in window 1142. Raised with the district operator; the release parameters were not touched.
+- 2026-05-04: The reconciliation desk carried forward a routine observation. Late inputs arrived from one feed and were loaded before the cut.
 
-- 2026-05-21: Basin engineer noted rejected telemetry frames from the watermaster's accounting service in window 1129. Raised with the district operator; the release parameters were not touched.
+- 2026-05-21: The exceptions queue owner carried forward a routine observation. A question raised on the floor was withdrawn once the entry was reread.
 
-- 2026-06-09: Basin engineer noted rejected telemetry frames from the telemetry relay in window 1164. Raised with the district operator; the release parameters were not touched.
+- 2026-06-09: An on-call engineer signed off a routine observation. Dashboard tiles lagged the refresh; traced to cache staleness rather than the engine. No follow-up was requested.
 
 > **Governance decision (2026-06-03 - #BAS-8210)** Priya: Operating policy baseline, read from /app/data/operating_policy.json at that fixed absolute path. Any field the policy file omits keeps its baseline: horizon_days = 180; curtail_below_year = 1960; flood_release_fraction_pct = 35; max_curtailments = 2400.
 
-- 2026-06-13: Operations review of the spillway gate controller in window 1178 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-06-13: An on-call engineer raised and closed a routine observation. The downstream vendor confirmed receipt inside the agreed window.
 
-- 2026-06-08: Watermaster on duty logged a routine observation for the telemetry relay during review window 1180. Stage drift reviewed; no operating change requested.
+- 2026-06-08: The audit lead filed a routine observation. A query about a prior-period entry was answered from the published schedule. Referred to the dated decisions and closed.
 
-- 2026-06-25: Operations stand-up recorded a routine note against the watermaster's accounting service for window 1200. The diversion backlog was cleared with no order raised.
+- 2026-06-25: The exceptions queue owner recorded a routine observation. A query about a prior-period entry was answered from the published schedule. Nothing here bears on engine behaviour.
 
-- 2026-06-09: Operations review of the spillway gate controller in window 1202 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-06-09: The audit lead filed a routine observation. The downstream vendor confirmed receipt inside the agreed window.
 
-- 2026-06-07: Basin engineer noted rejected telemetry frames from the snowpack model feed in window 1201. Raised with the district operator; the release parameters were not touched.
+- 2026-06-07: A weekly review raised and closed a routine observation. A batch retried once after a transient timeout and completed on the second pass.
 
-- 2026-06-13: Operations review of the telemetry relay in window 1173 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-06-13: An on-call engineer raised and closed a routine observation. Storage on the staging host was extended after the export outgrew its allocation. The thread was archived after review.
 
-- 2026-06-19: Operations review of the spillway gate controller in window 1199 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-06-19: The operations desk spot-checked a routine observation. The count sat a little above the running mean, entirely from estimated inputs. Closed with no parameter change.
 
-- 2026-06-25: Operations stand-up recorded a routine note against the canal headworks for window 1190. The diversion backlog was cleared with no order raised.
+- 2026-06-25: The controls team raised and closed a routine observation. A batch retried once after a transient timeout and completed on the second pass.
 
-- 2026-06-07: Operations review of the watermaster's accounting service in window 1203 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-06-07: An on-call engineer reviewed a routine observation. Two accounts showed a same-day transfer the export had not yet picked up. Referred to the dated decisions and closed.
 
-- 2026-06-25: Watermaster on duty logged a routine observation for the snowpack model feed during review window 1177. Stage drift reviewed; no operating change requested.
+- 2026-06-25: A reviewer on shift logged a routine observation. Storage on the staging host was extended after the export outgrew its allocation. The thread was archived after review.
 
-- 2026-06-10: Operations review of the telemetry relay in window 1182 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-06-10: The duty analyst spot-checked a routine observation. The count sat a little above the running mean, entirely from estimated inputs. No follow-up was requested.
 
-- 2026-06-26: Operations review of the spillway gate controller in window 1187 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-06-26: The platform team spot-checked a routine observation. A question raised on the floor was withdrawn once the entry was reread. Filed for the record.
 
-- 2026-06-24: Watermaster on duty logged a routine observation for the spillway gate controller during review window 1181. Stage drift reviewed; no operating change requested.
+- 2026-06-24: The operations desk raised and closed a routine observation. Storage on the staging host was extended after the export outgrew its allocation. No action was carried forward.
 
-- 2026-06-11: Watermaster on duty logged a routine observation for the snowpack model feed during review window 1167. Stage drift reviewed; no operating change requested.
+- 2026-06-11: A shift handover spot-checked a routine observation. Late inputs arrived from one feed and were loaded before the cut. Nothing here bears on engine behaviour.
 
-- 2026-06-27: Operations review of the snowpack model feed in window 1170 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-06-27: The exceptions queue owner carried forward a routine observation. A typo in a reference record was corrected before the run started. No follow-up was requested.
 
-- 2026-06-20: Operations review of the telemetry relay in window 1199 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-06-20: The reconciliation desk opened a query on a routine observation. The downstream vendor confirmed receipt inside the agreed window. Referred to the dated decisions and closed.
 
-- 2026-06-05: Watermaster on duty logged a routine observation for the spillway gate controller during review window 1193. Stage drift reviewed; no operating change requested.
+- 2026-06-05: The exceptions queue owner spot-checked a routine observation. One record appeared twice in the export after a mid-cycle correction. Referred to the dated decisions and closed.
 
-- 2026-06-07: Operations review of the watermaster's accounting service in window 1183 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-06-07: A stand-up note opened a query on a routine observation. The count sat a little above the running mean, entirely from estimated inputs. Closed with no parameter change.
 
-- 2026-06-03: Operations review of the telemetry relay in window 1166 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-06-03: The exceptions queue owner filed a routine observation. An operator asked whether a credit had posted; it had, in the preceding period. Nothing here bears on engine behaviour.
 
-- 2026-06-02: Operations review of the spillway gate controller in window 1179 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-06-02: A stand-up note filed a routine observation. Late inputs arrived from one feed and were loaded before the cut.
 
-- 2026-06-09: Operations review of the snowpack model feed in window 1201 closed with no action; the standing thresholds were reconfirmed as they are.
+- 2026-06-09: The audit lead reviewed a routine observation. Two accounts showed a same-day transfer the export had not yet picked up.
 
-- 2026-06-04: Basin engineer noted rejected telemetry frames from the telemetry relay in window 1175. Raised with the district operator; the release parameters were not touched.
+- 2026-06-04: The platform team signed off a routine observation. A typo in a reference record was corrected before the run started.
 
-- 2026-06-24: Operations stand-up recorded a routine note against the telemetry relay for window 1185. The diversion backlog was cleared with no order raised.
+- 2026-06-24: A reviewer on shift spot-checked a routine observation. Storage on the staging host was extended after the export outgrew its allocation. Filed for the record.
 
-- 2026-06-01: Watermaster on duty logged a routine observation for the snowpack model feed during review window 1183. Stage drift reviewed; no operating change requested.
+- 2026-06-01: The reconciliation desk logged a routine observation. A duplicate order was cancelled at source and never reached the run.
