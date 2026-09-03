@@ -268,9 +268,17 @@ func main() {
 		}
 		return a.RightID < b.RightID
 	})
+	// #BAS-8198: everything past the cap is dropped from the record though it
+	// still counts in the totals. The cap applies at every value it can take,
+	// zero included -- guarding on maxCurtail > 0 made a cap of zero mean "no
+	// limit", which is the opposite of what the decision says.
 	recorded := curtailments
-	if maxCurtail > 0 && len(recorded) > maxCurtail {
-		recorded = recorded[:maxCurtail]
+	limit := maxCurtail
+	if limit < 0 {
+		limit = 0
+	}
+	if len(recorded) > limit {
+		recorded = recorded[:limit]
 	}
 
 	if err := os.MkdirAll(*outputDir, 0o755); err != nil {

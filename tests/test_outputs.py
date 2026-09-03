@@ -456,6 +456,68 @@ def test_the_artifacts_are_serialised_exactly_as_the_contract_states(primary_out
         "the rebuilt gauge series is not the contract's two-space indent")
 
 
+def test_a_policy_that_omits_a_field_keeps_the_governed_baseline():
+    """#BAS-8210 fixes a baseline per field, and nothing exercised it.
+
+    Every other probe writes all four fields, so an engine that dropped the
+    fallback entirely -- reading a missing field as Go's zero value, which is
+    what the shipped scheduler does -- passed the whole suite. Each field is
+    dropped on its own here, so a fallback that only fires on an empty file is
+    not enough either: the dropped one has to reach its baseline while the
+    others keep the staged figure.
+    """
+    path = POLICY_PATH
+    saved = path.read_text(encoding="utf-8")
+    baselines = {"horizon_days": 180, "curtail_below_year": 1960,
+                 "flood_release_fraction_pct": 35, "max_curtailments": 2400}
+    staged = {"horizon_days": 9, "curtail_below_year": 1905,
+              "flood_release_fraction_pct": 61, "max_curtailments": 7}
+    reported = {"horizon_days": "effective_horizon_days",
+                "curtail_below_year": "effective_curtail_year",
+                "flood_release_fraction_pct": "effective_flood_fraction",
+                "max_curtailments": "effective_max_curtailments"}
+    assert all(staged[f] != baselines[f] for f in baselines), (
+        "a staged value equals its baseline, so dropping that field proves nothing")
+    try:
+        for field in baselines:
+            _write_json(path, {"default": {k: v for k, v in staged.items()
+                                           if k != field}})
+            _, summary, _, _ = _run_pipeline()
+            assert summary[reported[field]] == baselines[field], (
+                f"omitting {field} did not fall back to {baselines[field]}; an "
+                "engine reading it as a zero value would report that instead")
+            for other in baselines:
+                if other != field:
+                    assert summary[reported[other]] == staged[other], (
+                        f"omitting {field} disturbed {other}")
+    finally:
+        path.write_text(saved, encoding="utf-8")
+
+
+def test_a_curtailment_cap_of_zero_records_nothing_but_still_counts():
+    """#BAS-8198 applies the cap at every value, and zero is a value.
+
+    "Everything past the policy's max_curtailments is dropped from the record
+    though it still counts in the totals" leaves nothing recorded at a cap of
+    zero. The engine guarded the truncation on a positive cap, which turned zero
+    into no limit at all -- the opposite reading.
+    """
+    path = POLICY_PATH
+    saved = path.read_text(encoding="utf-8")
+    shipped = json.loads(saved)["default"]
+    try:
+        _write_json(path, {"default": dict(shipped, max_curtailments=0)})
+        _, summary, _, queue = _run_pipeline()
+        assert queue == [], (
+            f"a cap of zero still recorded {len(queue)} curtailments")
+        assert summary["recorded_curtailment_count"] == 0
+        assert summary["curtailment_count"] > 0, (
+            "the run raised no curtailment at all, so the cap is untested here")
+        assert summary["effective_max_curtailments"] == 0
+    finally:
+        path.write_text(saved, encoding="utf-8")
+
+
 def test_each_policy_field_changes_the_behaviour_it_governs():
     """Not just the figure the summary echoes back.
 
