@@ -24,7 +24,12 @@ def test_recovery_sources_are_intact():
     live = {n: hashlib.sha256(Path(p).read_bytes()).hexdigest() for n, p in (
         ("snapshot", SNAPSHOT_PATH), ("journal", JOURNAL_PATH), ("datum", DATUM_PATH),
         ("reservoirs", RESERVOIR_PATH), ("rights", RIGHTS_PATH),
-        ("policy", POLICY_PATH), ("log", LOG_PATH))}
+        ("policy", POLICY_PATH),
+        # instruction.md names the contract among the files that come back
+        # byte-identical, and the schema comparison beside this one is satisfied
+        # by any file that merely parses the same
+        ("contract", SPEC_PATH),
+        ("log", LOG_PATH))}
     assert _digest(live) == FIXTURE["rule_sources_digest"]
 
 
@@ -190,7 +195,12 @@ def test_releases_respect_the_outlet_limit_and_the_dead_pool(primary_outputs):
         res = register[row["reservoir_id"]]
         assert row["total_release_af"] <= res["outlet_limit_af_day"]
         assert row["total_release_af"] == row["env_flow_af"] + row["rights_af"] + row["flood_af"]
-        assert row["closing_storage_af"] >= 0
+        # #BAS-8198 sets the floor at the reservoir's dead pool, not at zero; the
+        # weaker >= 0 form passed a run that drew a reservoir into its dead storage
+        assert row["closing_storage_af"] >= res["dead_storage_af"], (
+            f'{row["reservoir_id"]} on day {row["day"]} closed at '
+            f'{row["closing_storage_af"]} af, below its dead pool of '
+            f'{res["dead_storage_af"]} af')
         assert row["closing_storage_af"] <= res["capacity_af"]
         assert row["outlet_bound"] == (row["total_release_af"] == res["outlet_limit_af_day"])
 
@@ -580,6 +590,80 @@ def test_each_policy_field_changes_the_behaviour_it_governs():
         POLICY_PATH.write_text(saved, encoding="utf-8")
 
 
+def test_a_policy_that_omits_a_field_keeps_the_governed_baseline():
+    """#BAS-8210 says an omitted field keeps its baseline, and nothing tested it.
+
+    Every other policy probe in this suite writes all four fields, so an engine
+    that required a complete policy file -- or that fell over on a partial one --
+    was graded identical to one that resolved each field independently. Each
+    field is dropped on its own here, and the three left standing have to keep
+    moving while the missing one falls back.
+    """
+    baseline = {"horizon_days": 180, "curtail_below_year": 1960,
+                "flood_release_fraction_pct": 35, "max_curtailments": 2400}
+    reported = {"horizon_days": "effective_horizon_days",
+                "curtail_below_year": "effective_curtail_year",
+                "flood_release_fraction_pct": "effective_flood_fraction",
+                "max_curtailments": "effective_max_curtailments"}
+    moved = {"horizon_days": 40, "curtail_below_year": 1930,
+             "flood_release_fraction_pct": 60, "max_curtailments": 25}
+    saved = POLICY_PATH.read_text(encoding="utf-8")
+    try:
+        for omitted in baseline:
+            partial = {k: v for k, v in moved.items() if k != omitted}
+            _write_json(POLICY_PATH, {"default": partial})
+            _, summary, _, _ = _run_pipeline()
+            assert summary[reported[omitted]] == baseline[omitted], (
+                f"with {omitted} left out of the policy the run reported "
+                f'{summary[reported[omitted]]} rather than the governed baseline '
+                f"of {baseline[omitted]}")
+            for present, value in partial.items():
+                assert summary[reported[present]] == value, (
+                    f"dropping {omitted} disturbed {present}, so the fields are "
+                    "not being resolved one at a time")
+    finally:
+        POLICY_PATH.write_text(saved, encoding="utf-8")
+
+
+def test_stale_contents_are_cleared_from_a_given_output_directory():
+    """The clearing rule is checked on the default path alone, not on --output-dir.
+
+    instruction.md says the directory a run writes into is cleared, and the only
+    probe for it passes no flags. An engine that special-cased /app/output and
+    wrote over whatever it found under an explicit --output-dir passed.
+    """
+    binary = _build(WORKFLOW_PATH)
+    _publish_inputs()
+    work = _candidate_dir()
+    out_dir = work / "given-output"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    os.chmod(out_dir, 0o777)
+    stale = out_dir / "release_schedule.json"
+    stale.write_text("[]\n", encoding="utf-8")
+    os.chmod(stale, 0o666)
+    junk = out_dir / "left_behind.json"
+    junk.write_text('{"stale": true}\n', encoding="utf-8")
+    os.chmod(junk, 0o666)
+    nested = out_dir / "scratch"
+    nested.mkdir()
+    (nested / "inner.json").write_text("{}\n", encoding="utf-8")
+    os.chmod(nested / "inner.json", 0o666)
+    os.chmod(nested, 0o777)
+    # the contract says the contents go and the directory itself stays, so the
+    # inode is taken before the run: a RemoveAll followed by MkdirAll fails here
+    before = out_dir.stat()
+
+    result = _run_agent([binary, "--output-dir", str(out_dir)], cwd=work)
+    assert result.returncode == 0, (
+        f"the run exited {result.returncode}\n"
+        f"stdout: {result.stdout[-2000:]}\nstderr: {result.stderr[-2000:]}")
+    assert sorted(q.name for q in out_dir.iterdir()) == [
+        "curtailment_queue.jsonl", "release_schedule.json", "summary.json"]
+    after = out_dir.stat()
+    assert (after.st_ino, after.st_dev) == (before.st_ino, before.st_dev), (
+        "the output directory was removed and recreated rather than emptied")
+
+
 def test_policy_path_actually_influences_the_output():
     """The policy is resolved from its fixed path, not inlined as constants."""
     saved = POLICY_PATH.read_text(encoding="utf-8")
@@ -641,7 +725,10 @@ def test_no_argument_run_writes_to_the_documented_defaults(primary_outputs):
     (default_out / "scratch").mkdir()
     os.chmod(default_out / "scratch", 0o777)
     result = _run_agent([binary], cwd=_candidate_dir())
-    assert result.returncode == 0, result.stderr
+    # the exit code is a precondition; the verdict is the directory listing below
+    assert result.returncode == 0, (
+        f"the run exited {result.returncode}\n"
+        f"stdout: {result.stdout[-2000:]}\nstderr: {result.stderr[-2000:]}")
     assert sorted(q.name for q in default_out.iterdir()) == ['curtailment_queue.jsonl', 'release_schedule.json', 'summary.json']
     _, summary, doc, queue = primary_outputs
     assert _load_json(default_out / "summary.json") == summary
@@ -659,7 +746,10 @@ def test_submitted_program_runs_unprivileged_and_cannot_write_reward(tmp_path):
         '\tfmt.Println(err != nil)\n}\n', encoding="utf-8")
     binary = _build(probe)
     result = _run_agent([binary], cwd=_candidate_dir())
-    assert result.returncode == 0, result.stderr
+    # the exit code is a precondition; the verdict is the two lines the probe printed
+    assert result.returncode == 0, (
+        f"the probe exited {result.returncode}\n"
+        f"stdout: {result.stdout[-2000:]}\nstderr: {result.stderr[-2000:]}")
     parts = result.stdout.split()
     assert parts[0] == str(CANDIDATE_UID) and parts[1] == "true"
 

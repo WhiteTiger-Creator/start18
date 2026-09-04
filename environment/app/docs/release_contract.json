@@ -42,6 +42,10 @@
         "closing_storage_af",
         "outlet_bound"
       ],
+      "field_notes": {
+        "closing_storage_af": "the reservoir's storage at the end of the day, never below its dead_storage_af nor above its capacity_af",
+        "outlet_bound": "true on a day whose total release equals the reservoir's outlet_limit_af_day exactly, so the outlet and not the water was the binding constraint"
+      },
       "path": "/app/output/release_schedule.json",
       "serialisation": "JSON array, two-space indent, trailing newline",
       "sort": "ascending by reservoir_id, then day"
