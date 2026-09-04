@@ -431,6 +431,23 @@ def test_the_curtailment_cap_truncates_the_record_but_not_the_totals():
 # --------------------------------------------------------------------------
 # Contract, budget, determinism and isolation
 # --------------------------------------------------------------------------
+def _as_contract_layout(raw: str) -> str:
+    """The text with encoder-specific escaping normalised away.
+
+    The contract fixes the LAYOUT -- two-space indent, trailing newline -- not the
+    escape style, and the two encoders disagree: Go's json.Marshal writes `<`, `>`
+    and `&` as \\u003c, \\u003e and \\u0026 and emits non-ASCII as literal UTF-8,
+    while Python's json.dumps does the opposite on both counts. Comparing raw bytes
+    against Python's rendering would fail a correct Go engine the moment any of
+    those characters reached a reservoir id, a right id or a note. Normalising both
+    sides leaves the indent and the newline pinned exactly, which is what the
+    contract states.
+    """
+    for escaped, literal in (("\\u003c", "<"), ("\\u003e", ">"), ("\\u0026", "&")):
+        raw = raw.replace(escaped, literal)
+    return raw
+
+
 def test_the_artifacts_are_serialised_exactly_as_the_contract_states(primary_outputs):
     """Read off the raw bytes, which every other check throws away by parsing.
 
@@ -446,7 +463,8 @@ def test_the_artifacts_are_serialised_exactly_as_the_contract_states(primary_out
         stated = spec[section]["serialisation"]
         assert "two-space indent" in stated and "trailing newline" in stated, stated
         assert raw.endswith("\n") and not raw.endswith("\n\n"), name
-        assert raw == json.dumps(json.loads(raw), indent=2) + "\n", (
+        assert _as_contract_layout(raw) == json.dumps(
+            json.loads(raw), indent=2, ensure_ascii=False) + "\n", (
             f"{name} is not the contract's two-space indent")
 
     raw = (out_dir / "curtailment_queue.jsonl").read_text(encoding="utf-8")
@@ -454,7 +472,8 @@ def test_the_artifacts_are_serialised_exactly_as_the_contract_states(primary_out
     assert raw == "" or raw.endswith("\n")
     for line in raw.splitlines():
         assert line.strip(), "the queue carries a blank line"
-        assert line == json.dumps(json.loads(line), separators=(",", ":")), (
+        assert _as_contract_layout(line) == json.dumps(
+            json.loads(line), separators=(",", ":"), ensure_ascii=False), (
             "a queue line is not compact JSON")
 
     # the rebuilt series is a graded artifact too, and carries its own rule
@@ -462,8 +481,58 @@ def test_the_artifacts_are_serialised_exactly_as_the_contract_states(primary_out
     stated = SPEC["reconciled_inputs"]["gauge_readings"]["serialisation"]
     assert "two-space indent" in stated and "trailing newline" in stated, stated
     assert raw.endswith("\n") and not raw.endswith("\n\n")
-    assert raw == json.dumps(json.loads(raw), indent=2) + "\n", (
+    assert _as_contract_layout(raw) == json.dumps(
+        json.loads(raw), indent=2, ensure_ascii=False) + "\n", (
         "the rebuilt gauge series is not the contract's two-space indent")
+
+
+def test_the_runtime_budget_is_published_and_is_what_a_run_is_held_to():
+    """The contract states a budget, and nothing tied the suite to it.
+
+    HARD_TIMEOUT_SEC named the published budget as the candidate timeout while
+    _run_agent applied no deadline at all, so a scheduler that never came back ran
+    until the whole verifier timed out rather than failing on its own run. The
+    constant here is the one _run_agent now kills at, and this pins it to the
+    number the agent can read.
+    """
+    spec = json.loads(SPEC_PATH.read_text(encoding="utf-8"))
+    assert spec["runtime_budget_seconds"] == HARD_TIMEOUT_SEC, (
+        "the published budget and the one a graded run is held to disagree: "
+        f"{spec['runtime_budget_seconds']} against {HARD_TIMEOUT_SEC}")
+    assert "runtime_budget_seconds" in spec["runtime_budget_note"], (
+        "the note beside the budget does not say a run is held to it")
+
+
+def test_staging_the_run_input_does_not_follow_a_planted_link():
+    """The series sits on the one /app/data path the agent replaces, and staging runs as root.
+
+    Every graded run copies /app/data/gauge_readings.json into the candidate's own
+    work area. That copy followed the source link, so a submission that left a
+    symlink there instead of a rebuilt series pointed root at whatever it named --
+    the sealed fixtures under /tests included -- and had the contents laid down at
+    0644 where the graded program reads them. Staging now refuses anything that is
+    not a regular file, and this plants the link to prove it.
+    """
+    sentinel = Path("/tests/fixtures/expected_report.json")
+    if not sentinel.exists():
+        sentinel = SPEC_PATH
+    original = SERIES_PATH.read_bytes()
+    mode = SERIES_PATH.stat().st_mode & 0o7777
+    try:
+        SERIES_PATH.unlink()
+        SERIES_PATH.symlink_to(sentinel)
+        staged = _candidate_dir() / "gauges.json"
+        with pytest.raises(AssertionError):
+            _stage_input(SERIES_PATH, staged)
+        assert not staged.exists(), (
+            "the planted link was staged anyway, so its target is now readable "
+            "at the path the graded program is handed")
+    finally:
+        if SERIES_PATH.is_symlink() or SERIES_PATH.exists():
+            SERIES_PATH.unlink()
+        SERIES_PATH.write_bytes(original)
+        os.chmod(SERIES_PATH, mode)
+    assert SERIES_PATH.read_bytes() == original
 
 
 def test_this_suite_defines_every_test_name_once():
@@ -744,22 +813,51 @@ def test_no_argument_run_writes_to_the_documented_defaults(primary_outputs):
     assert _digest(_load_jsonl(default_out / "curtailment_queue.jsonl")) == _digest(queue)
 
 
-def test_submitted_program_runs_unprivileged_and_cannot_write_reward(tmp_path):
-    """The graded program runs as nobody and cannot touch the reward path."""
+def test_submitted_program_runs_unprivileged_and_cannot_reach_verifier_assets(tmp_path):
+    """The graded program runs as nobody and can neither write the reward nor read the goldens.
+
+    Separate mode keeps the sealed fixtures out of the agent's container, but this
+    suite rebuilds the agent's source and runs it HERE, where those fixtures and
+    /logs/verifier both exist. Dropping the uid is what stands between that process
+    and them, so the probe reads as well as writes: it tries the reward path, the
+    sealed expected_report.json and the golden contract, and every one has to be
+    refused. Nothing here asserts a particular mode or owner -- the cloud builder
+    assigns those -- only that the boundary holds however it was set.
+    """
     probe = tmp_path / "main.go"
     probe.write_text(
         'package main\n\nimport ("fmt"; "os")\n\n'
+        'func readable(p string) bool {\n'
+        '\tf, err := os.Open(p)\n'
+        '\tif err != nil {\n\t\treturn false\n\t}\n'
+        '\tdefer f.Close()\n'
+        '\tb := make([]byte, 1)\n'
+        '\t_, err = f.Read(b)\n'
+        '\treturn err == nil\n}\n\n'
         'func main() {\n\tfmt.Println(os.Getuid())\n'
         '\terr := os.WriteFile("/logs/verifier/reward.txt", []byte("1"), 0o644)\n'
-        '\tfmt.Println(err != nil)\n}\n', encoding="utf-8")
+        '\tfmt.Println(err != nil)\n'
+        '\tfor _, p := range []string{\n'
+        '\t\t"/logs/verifier/reward.txt",\n'
+        '\t\t"/tests/fixtures/expected_report.json",\n'
+        '\t\t"/tests/fixtures/contract_golden.json",\n'
+        '\t\t"/tests/test_outputs.py",\n'
+        '\t} {\n\t\tfmt.Println(p, readable(p))\n\t}\n}\n',
+        encoding="utf-8")
     binary = _build(probe)
     result = _run_agent([binary], cwd=_candidate_dir())
-    # the exit code is a precondition; the verdict is the two lines the probe printed
+    # the exit code is a precondition; the verdict is what the probe reported
     assert result.returncode == 0, (
         f"the probe exited {result.returncode}\n"
         f"stdout: {result.stdout[-2000:]}\nstderr: {result.stderr[-2000:]}")
-    parts = result.stdout.split()
-    assert parts[0] == str(CANDIDATE_UID) and parts[1] == "true"
+    lines = result.stdout.split("\n")
+    assert lines[0].strip() == str(CANDIDATE_UID), (
+        f"the graded program ran as uid {lines[0].strip()}, not {CANDIDATE_UID}")
+    assert lines[1].strip() == "true", "the graded program could write the reward file"
+    reachable = [l.split()[0] for l in lines[2:] if l.strip() and l.split()[1] == "true"]
+    assert reachable == [], (
+        "code run the way the agent's program is run can read verifier-only "
+        f"assets: {reachable}")
 
 
 def test_frozen_snapshot_preserved():

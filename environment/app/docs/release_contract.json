@@ -105,7 +105,7 @@
       "sort": "ascending by reservoir_id, then day, then reading_id"
     }
   },
-  "runtime_budget_note": "guidance on the scale a run is expected to handle, not a graded ceiling: the verifier bounds its own run rather than timing this one",
+  "runtime_budget_note": "the scale a run is expected to handle. A graded run is killed at runtime_budget_seconds rather than timed, so a run that does not come back inside it fails on its own account and the verdict never turns on how fast the grading host happens to be",
   "runtime_budget_seconds": 90,
   "units": {
     "day": "integer offset on the basin operating-season grid",

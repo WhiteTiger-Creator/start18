@@ -11,6 +11,7 @@ import hashlib
 import json
 import os
 import shutil
+import stat
 import signal
 import subprocess
 import tempfile
@@ -276,15 +277,50 @@ def _reap_group(pgid: int) -> None:
         time.sleep(0.02)
 
 
+def _stage_input(src: Path, dst: Path) -> None:
+    """Copy `src` to `dst` as a regular file, never through a link.
+
+    The default input is /app/data/gauge_readings.json, the one path under /app/data
+    the agent is told to replace, and staging runs as root. shutil.copyfile follows
+    the source link, so a submission that left a symlink there instead of a rebuilt
+    series pointed root at whatever it named -- the sealed fixtures under /tests
+    included -- and had the contents laid down at 0644 inside the candidate's own
+    work area, where the graded program reads it. O_NOFOLLOW refuses the link at the
+    final component and the fstat refuses anything that is not a regular file.
+    """
+    try:
+        handle = os.open(str(src), os.O_RDONLY | os.O_NOFOLLOW)
+    except OSError as exc:
+        raise AssertionError(
+            f"{src} could not be staged as a regular file: {exc}") from exc
+    try:
+        info = os.fstat(handle)
+        assert stat.S_ISREG(info.st_mode), (
+            f"{src} is not a regular file, so it is not staged")
+        payload = b""
+        while True:
+            chunk = os.read(handle, 1 << 20)
+            if not chunk:
+                break
+            payload += chunk
+    finally:
+        os.close(handle)
+    dst.write_bytes(payload)
+    os.chmod(dst, 0o644)
+
+
 def _run_agent(argv, cwd: Path):
     """Run the submitted program unprivileged and in its own process group.
 
     Output goes to temporary files rather than pipes: communicate() returns when
     the pipes reach EOF, not when the program exits, so a child that called
     setsid and outlived its parent while holding the write end would stall the
-    read out. And no inner deadline -- Harbor already bounds the verifier, and a
-    second clock only adds a way for a correct but slow run to fail on a loaded
-    grading machine.
+    read out. The contract publishes runtime_budget_seconds and the constant above
+    named it as the candidate timeout while nothing applied it, so a scheduler that
+    never came back ran until the whole verifier timed out instead of failing on its
+    own run. It is a hard kill at that budget, never a measured elapsed time, so the
+    verdict does not turn on how fast the grading host happens to be -- the reference
+    finishes in well under a second against ninety.
     """
     with tempfile.TemporaryFile(mode="w+", encoding="utf-8", errors="replace") as out_fh, \
             tempfile.TemporaryFile(mode="w+", encoding="utf-8", errors="replace") as err_fh:
@@ -294,14 +330,24 @@ def _run_agent(argv, cwd: Path):
             preexec_fn=_apply_rlimits,
         )
         pgid = proc.pid      # session leader: pgid == pid, captured before the wait
+        timed_out = False
         try:
-            proc.wait()
+            try:
+                proc.wait(timeout=HARD_TIMEOUT_SEC)
+            except subprocess.TimeoutExpired:
+                timed_out = True
+                proc.kill()
+                proc.wait()
         finally:
             _reap_group(pgid)
             reap_candidate_uid()
         out_fh.seek(0)
         err_fh.seek(0)
         result = subprocess.CompletedProcess(argv, proc.returncode, out_fh.read(), err_fh.read())
+    assert not timed_out, (
+        f"the run did not come back inside the contract's published budget of "
+        f"{HARD_TIMEOUT_SEC}s and was killed\n"
+        f"stdout: {result.stdout[-2000:]}\nstderr: {result.stderr[-2000:]}")
     return result
 
 
@@ -314,8 +360,7 @@ def _run_pipeline(script_path: Path = WORKFLOW_PATH, input_path: Path = SERIES_P
     out_dir.mkdir(parents=True, exist_ok=True)
     os.chmod(out_dir, 0o777)
     staged = work / "gauges.json"
-    shutil.copyfile(str(input_path), str(staged))
-    os.chmod(staged, 0o644)
+    _stage_input(Path(input_path), staged)
     result = _run_agent([binary, "--input", str(staged), "--output-dir", str(out_dir)], cwd=work)
     assert result.returncode == 0, f"scheduler failed:\n{result.stdout}\n{result.stderr}"
     return (out_dir,
@@ -362,6 +407,7 @@ __all__ = [
     "CURTAIL_REASONS",
     "RUNTIME_BUDGET_SEC",
     "HARD_TIMEOUT_SEC",
+    "_stage_input",
     "CANDIDATE_UID",
     "_CWORK",
     "_SETPRIV",
