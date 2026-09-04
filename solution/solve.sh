@@ -9,9 +9,9 @@ export GOCACHE=/tmp/gocache GO111MODULE=off GOPATH=/tmp/gopath
 # prefix. Replay the telemetry journal onto the pre-migration snapshot, bring
 # every reading onto the basin datum, and write the result back to that path.
 
-go run "${SCRIPT_DIR}/recover_gauges.go"
+timeout 600 go run "${SCRIPT_DIR}/recover_gauges.go"
 
 # --- Step 2: restore the scheduler and produce the release artifacts --------
 
 cp "${SCRIPT_DIR}/schedule_releases_fixed.go" /app/workflow/schedule_releases.go
-go run /app/workflow/schedule_releases.go --output-dir /app/output
+timeout 600 go run /app/workflow/schedule_releases.go --output-dir /app/output

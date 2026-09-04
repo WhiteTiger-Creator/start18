@@ -773,6 +773,58 @@ def test_reservoir_register_actually_influences_the_output():
         RESERVOIR_PATH.write_text(saved, encoding="utf-8")
 
 
+def test_the_scheduler_is_one_go_source_compiled_from_that_file_alone():
+    """instruction.md makes the deliverable that one Go source, built on its own.
+
+    _build copies /app/workflow/schedule_releases.go to a temporary directory and
+    compiles it there, so a submission split across siblings fails with an
+    undefined-symbol error that does not say why, and nothing stated the rule.
+    This does not ban a sibling: nothing in that directory can join a build that
+    never sees the directory, so a stray file is not by itself a breach.
+    """
+    engine = WORKFLOW_PATH.resolve()
+    # the go tool ignores sources whose name starts with "." or "_", so the frozen
+    # copy beside the scheduler is not a sibling in the sense that matters
+    siblings = sorted(q.name for q in WORKFLOW_PATH.parent.glob("*.go")
+                      if q.resolve() != engine and not q.name.startswith((".", "_")))
+    try:
+        _build(WORKFLOW_PATH)
+    except AssertionError as exc:
+        raise AssertionError(
+            f"{WORKFLOW_PATH.name} does not compile on its own, as instruction.md "
+            f"requires. Sibling sources beside it, which never join this build: "
+            f"{siblings}\n\n{exc}") from exc
+
+
+def test_a_run_writes_nothing_outside_its_output_directory():
+    """instruction.md scopes a run to its --output-dir, and nothing checked it.
+
+    Every other run here reads the three artifacts by name, so a run that also
+    dropped a scratch file beside them, or in the directory it was started from,
+    satisfied all of them. This walks the whole work area afterwards.
+    """
+    binary = _build(WORKFLOW_PATH)
+    _publish_inputs()
+    work = _candidate_dir()
+    out_dir = work / "output"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    os.chmod(out_dir, 0o777)
+    staged = work / "gauges.json"
+    _stage_input(SERIES_PATH, staged)
+
+    before = {str(q.relative_to(work)) for q in work.rglob("*")}
+    result = _run_agent(
+        [binary, "--input", str(staged), "--output-dir", str(out_dir)], cwd=work)
+    assert result.returncode == 0, (
+        f"the run exited {result.returncode}\n"
+        f"stdout: {result.stdout[-2000:]}\nstderr: {result.stderr[-2000:]}")
+    after = {str(q.relative_to(work)) for q in work.rglob("*")}
+    written = sorted(after - before)
+    assert written == ["output/curtailment_queue.jsonl", "output/release_schedule.json",
+                       "output/summary.json"], (
+        f"the run wrote outside its output directory: {written}")
+
+
 def test_run_is_idempotent(primary_outputs):
     """Re-running over the same series reproduces the same artifacts."""
     _, summary, schedule, queue = primary_outputs

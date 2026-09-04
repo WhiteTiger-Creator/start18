@@ -3,10 +3,15 @@ set -uo pipefail
 
 mkdir -p /logs/verifier
 # The reward channel is root-only: the graded program runs as an unprivileged
-# uid and must not be able to read it, let alone write it.
-chmod 700 /logs/verifier
+# uid and must not be able to read it, let alone write it. The script runs
+# without `set -e` on purpose, so that a failing pytest still writes a reward
+# rather than being reclassified as an infrastructure error -- but that also
+# means a failed chmod here would pass silently and surface later as a confusing
+# isolation-test failure, so this one is checked where it happens.
+chmod 700 /logs/verifier || { echo "could not close /logs/verifier" >&2; exit 1; }
 echo 0 > /logs/verifier/reward.txt
-chmod 600 /logs/verifier/reward.txt
+chmod 600 /logs/verifier/reward.txt || {
+  echo "could not close /logs/verifier/reward.txt" >&2; exit 1; }
 
 TEST_DIR="${TEST_DIR:-/tests}"
 

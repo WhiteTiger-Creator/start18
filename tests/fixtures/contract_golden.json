@@ -52,6 +52,17 @@
     },
     "summary": {
       "container": "object",
+      "field_notes": {
+        "curtailment_count": "every curtailment the run raised, counted in full and before the cap is applied to the record",
+        "outlet_bound_day_count": "the scheduled rows whose outlet_bound is true",
+        "reading_count": "the readings in the gauge series handed to --input, counted as read and before any of them is set aside as suspect",
+        "recorded_curtailment_count": "the curtailment rows the queue actually carries, so it is curtailment_count capped at effective_max_curtailments",
+        "reservoir_count": "the distinct reservoirs the reservoir register carries",
+        "right_count": "the distinct appropriations the rights register carries",
+        "scheduled_day_count": "the reservoir-days the run scheduled, one per reservoir per day of the horizon, whatever the inflow on that day turned out to be",
+        "total_release_af": "the sum of total_release_af across every scheduled row",
+        "total_shortfall_af": "the acre-feet gone short across every curtailment raised, counted over all of them rather than only the recorded ones"
+      },
       "field_types": {
         "curtailment_count": "integer",
         "effective_curtail_year": "integer",
@@ -91,6 +102,9 @@
   "reconciled_inputs": {
     "gauge_readings": {
       "container": "array",
+      "field_notes": {
+        "quality": "`good` on a reading the basin office accepts and `suspect` on one it has marked; the governing decision for a suspect reading is in the board's minutes, not here"
+      },
       "path": "/app/data/gauge_readings.json",
       "record_fields": [
         "reading_id",
