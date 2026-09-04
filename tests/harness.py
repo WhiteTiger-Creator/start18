@@ -6,6 +6,7 @@ helpers live here so test_outputs.py carries assertions and nothing else.
 
 from __future__ import annotations
 
+import ast
 import hashlib
 import json
 import os
@@ -334,6 +335,7 @@ __all__ = [
     "subprocess",
     "tempfile",
     "time",
+    "ast",
     "Path",
     "pytest",
     "APP",

@@ -48,25 +48,41 @@ func readJSON(path string, into any) {
 	}
 }
 
+// setField applies one amendment. #BAS-8170 says an amend overwrites THE NAMED
+// FIELD without naming a subset, so every mutable reading field is handled here.
+// reading_id is left out on purpose: it is the key the change is matched on, so
+// an amendment cannot rewrite the identity of the reading it is addressed to.
+// corrected_inflow_af is left out too -- #BAS-8174 derives it from the raw stage
+// and the datum offset rather than storing it. The shipped journal only amends
+// quality, sensor and raw_inflow_af, which is why a narrower handler happened to
+// agree with it; a conforming journal amending any other field would not.
 func setField(r *reading, field string, value any) {
-	switch field {
-	case "quality":
+	str := func(dst *string) {
 		if s, ok := value.(string); ok {
-			r.Quality = s
+			*dst = s
 		}
-	case "sensor":
-		if s, ok := value.(string); ok {
-			r.Sensor = s
-		}
-	case "raw_inflow_af":
+	}
+	num := func(set func(int64)) {
 		switch v := value.(type) {
 		case float64:
-			r.RawInflowAF = int64(v)
+			set(int64(v))
 		case string:
 			if n, err := strconv.ParseInt(v, 10, 64); err == nil {
-				r.RawInflowAF = n
+				set(n)
 			}
 		}
+	}
+	switch field {
+	case "quality":
+		str(&r.Quality)
+	case "sensor":
+		str(&r.Sensor)
+	case "reservoir_id":
+		str(&r.ReservoirID)
+	case "raw_inflow_af":
+		num(func(n int64) { r.RawInflowAF = n })
+	case "day":
+		num(func(n int64) { r.Day = int(n) })
 	}
 }
 

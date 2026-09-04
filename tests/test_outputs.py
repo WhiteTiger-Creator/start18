@@ -466,6 +466,49 @@ def test_the_artifacts_are_serialised_exactly_as_the_contract_states(primary_out
         "the rebuilt gauge series is not the contract's two-space indent")
 
 
+def test_this_suite_defines_every_test_name_once():
+    """A repeated def silently discards the earlier body, and pytest says nothing.
+
+    Two tests here once carried the same name; Python bound the second over the
+    first at import, so a fully written check never ran and nothing warned. This
+    reads the module's own parse tree so the collision cannot recur unnoticed.
+    """
+    tree = ast.parse(Path(__file__).read_text(encoding="utf-8"))
+    names = [node.name for node in tree.body
+             if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))]
+    repeated = sorted({n for n in names if names.count(n) > 1})
+    assert not repeated, (
+        f"these names are defined more than once, so the earlier body never "
+        f"runs: {repeated}")
+
+
+def test_a_right_on_the_curtailment_year_itself_is_junior():
+    """#BAS-8196 puts the boundary at or after the policy's year, and no right sits on it.
+
+    The register carries no right whose appropriation year equals the policy's
+    curtail_below_year, so an engine reading the boundary as strictly after it
+    matched every fixture. Here the flood release takes the whole outlet and both
+    rights go short: the 1940 right is senior and reads supply_short, while the
+    right dated exactly on 1960 is junior and has to read flood_operation.
+    """
+    year = 1960
+    _, _, schedule, queue = _probe(
+        [_reading("GR-1", corrected=0)],
+        [_reservoir(capacity=100_000, flood_pool=40_000, outlet=500, opening=60_000)],
+        [_right("R-001", year=year - 20, daily=400),
+         _right("R-002", year=year, daily=400)],
+        curtail_year=year)
+    assert schedule[0]["flood_af"] > 0, "the crafted day carries no flood release"
+    reasons = {r["right_id"]: r["reason"] for r in queue}
+    assert set(reasons) == {"R-001", "R-002"}, (
+        f"both rights should go short behind the flood release: {reasons}")
+    assert reasons["R-002"] == "flood_operation", (
+        "a right whose appropriation year equals curtail_below_year was read as "
+        "senior; #BAS-8196 puts the boundary at or after that year")
+    assert reasons["R-001"] == "supply_short", (
+        "the 1940 right is senior to the policy year and cannot take the flood reason")
+
+
 def test_a_policy_that_omits_a_field_keeps_the_governed_baseline():
     """#BAS-8210 fixes a baseline per field, and nothing exercised it.
 
@@ -586,41 +629,6 @@ def test_each_policy_field_changes_the_behaviour_it_governs():
             {(r["day"], r["reservoir_id"], r["right_id"]) for r in junior}, (
             "the priority year changed which rights were curtailed, not just the "
             "reason each one carries")
-    finally:
-        POLICY_PATH.write_text(saved, encoding="utf-8")
-
-
-def test_a_policy_that_omits_a_field_keeps_the_governed_baseline():
-    """#BAS-8210 says an omitted field keeps its baseline, and nothing tested it.
-
-    Every other policy probe in this suite writes all four fields, so an engine
-    that required a complete policy file -- or that fell over on a partial one --
-    was graded identical to one that resolved each field independently. Each
-    field is dropped on its own here, and the three left standing have to keep
-    moving while the missing one falls back.
-    """
-    baseline = {"horizon_days": 180, "curtail_below_year": 1960,
-                "flood_release_fraction_pct": 35, "max_curtailments": 2400}
-    reported = {"horizon_days": "effective_horizon_days",
-                "curtail_below_year": "effective_curtail_year",
-                "flood_release_fraction_pct": "effective_flood_fraction",
-                "max_curtailments": "effective_max_curtailments"}
-    moved = {"horizon_days": 40, "curtail_below_year": 1930,
-             "flood_release_fraction_pct": 60, "max_curtailments": 25}
-    saved = POLICY_PATH.read_text(encoding="utf-8")
-    try:
-        for omitted in baseline:
-            partial = {k: v for k, v in moved.items() if k != omitted}
-            _write_json(POLICY_PATH, {"default": partial})
-            _, summary, _, _ = _run_pipeline()
-            assert summary[reported[omitted]] == baseline[omitted], (
-                f"with {omitted} left out of the policy the run reported "
-                f'{summary[reported[omitted]]} rather than the governed baseline '
-                f"of {baseline[omitted]}")
-            for present, value in partial.items():
-                assert summary[reported[present]] == value, (
-                    f"dropping {omitted} disturbed {present}, so the fields are "
-                    "not being resolved one at a time")
     finally:
         POLICY_PATH.write_text(saved, encoding="utf-8")
 
