@@ -37,4 +37,5 @@ RUN set -eu; \
 # it are the recovery sources. All values are synthetic.
 COPY app/ /app/
 RUN cp /app/workflow/schedule_releases.go /app/workflow/.schedule_releases.original.go \
-    && chmod a-w /app/workflow/.schedule_releases.original.go
+    && chmod a-w /app/workflow/.schedule_releases.original.go \
+    && mkdir -p /app/output && chmod 777 /app/output

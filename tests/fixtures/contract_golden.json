@@ -103,6 +103,7 @@
     "gauge_readings": {
       "container": "array",
       "field_notes": {
+        "corrected_inflow_af": "derived rather than carried: the surviving sources record only the raw stage, and the board's minutes settle how a raw stage is brought onto the basin datum, so this field is computed during the rebuild and is not present on the truncated rows",
         "quality": "`good` on a reading the basin office accepts and `suspect` on one it has marked; the governing decision for a suspect reading is in the board's minutes, not here"
       },
       "path": "/app/data/gauge_readings.json",
