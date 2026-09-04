@@ -813,6 +813,14 @@ def test_no_argument_run_writes_to_the_documented_defaults(primary_outputs):
     assert _digest(_load_jsonl(default_out / "curtailment_queue.jsonl")) == _digest(queue)
 
 
+PROBED_PATHS = [
+    "/logs/verifier/reward.txt",
+    "/tests/fixtures/expected_report.json",
+    "/tests/fixtures/contract_golden.json",
+    "/tests/test_outputs.py",
+]
+
+
 def test_submitted_program_runs_unprivileged_and_cannot_reach_verifier_assets(tmp_path):
     """The graded program runs as nobody and can neither write the reward nor read the goldens.
 
@@ -850,11 +858,22 @@ def test_submitted_program_runs_unprivileged_and_cannot_reach_verifier_assets(tm
     assert result.returncode == 0, (
         f"the probe exited {result.returncode}\n"
         f"stdout: {result.stdout[-2000:]}\nstderr: {result.stderr[-2000:]}")
+    # Every line the probe printed is read as written. Filtering blanks out of
+    # captured output would let a probe that printed nothing at all clear the
+    # reachability check, so the line count is asserted instead and a blank line
+    # is a failure rather than something skipped.
     lines = result.stdout.split("\n")
-    assert lines[0].strip() == str(CANDIDATE_UID), (
-        f"the graded program ran as uid {lines[0].strip()}, not {CANDIDATE_UID}")
-    assert lines[1].strip() == "true", "the graded program could write the reward file"
-    reachable = [l.split()[0] for l in lines[2:] if l.strip() and l.split()[1] == "true"]
+    assert lines and lines[-1] == "", "the probe's output does not end in a newline"
+    lines = lines[:-1]
+    assert len(lines) == 2 + len(PROBED_PATHS), (
+        f"the probe printed {len(lines)} lines, expected {2 + len(PROBED_PATHS)}: {lines!r}")
+    assert lines[0] == str(CANDIDATE_UID), (
+        f"the graded program ran as uid {lines[0]!r}, not {CANDIDATE_UID}")
+    assert lines[1] == "true", "the graded program could write the reward file"
+    reported = dict(line.rsplit(" ", 1) for line in lines[2:])
+    assert sorted(reported) == sorted(PROBED_PATHS), (
+        f"the probe did not report on every path: {sorted(reported)}")
+    reachable = sorted(path for path, seen in reported.items() if seen == "true")
     assert reachable == [], (
         "code run the way the agent's program is run can read verifier-only "
         f"assets: {reachable}")
