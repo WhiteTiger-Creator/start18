@@ -28418,5 +28418,49 @@
     "reading_id": "GR-000343",
     "seq": 17,
     "value": 7796
+  },
+  {
+    "field": "reading_id",
+    "kind": "amend",
+    "posted_by": "telemetry-migration",
+    "reading_id": "GR-000001",
+    "seq": 3771,
+    "value": "GR-009999"
+  },
+  {
+    "field": "corrected_inflow_af",
+    "kind": "amend",
+    "posted_by": "telemetry-migration",
+    "reading_id": "GR-000005",
+    "seq": 3772,
+    "value": 999999
+  },
+  {
+    "field": "operator_note",
+    "kind": "amend",
+    "posted_by": "telemetry-migration",
+    "reading_id": "GR-000016",
+    "seq": 3773,
+    "value": "checked"
+  },
+  {
+    "kind": "restore",
+    "posted_by": "telemetry-migration",
+    "reading_id": "GR-000017",
+    "seq": 3774
+  },
+  {
+    "field": "quality",
+    "kind": "amend",
+    "posted_by": "telemetry-migration",
+    "reading_id": "GR-009001",
+    "seq": 3775,
+    "value": "suspect"
+  },
+  {
+    "kind": "retract",
+    "posted_by": "telemetry-migration",
+    "reading_id": "GR-009002",
+    "seq": 3776
   }
 ]

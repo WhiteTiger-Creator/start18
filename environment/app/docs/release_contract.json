@@ -21,6 +21,7 @@
         "shortfall_af",
         "reason"
       ],
+      "field_closure": "element_fields is the whole of a row: each row carries exactly those members and no other",
       "path": "/app/output/curtailment_queue.jsonl",
       "reasons": [
         "flood_operation",
@@ -42,6 +43,7 @@
         "closing_storage_af",
         "outlet_bound"
       ],
+      "field_closure": "element_fields is the whole of a row: each row carries exactly those members and no other",
       "field_notes": {
         "closing_storage_af": "the reservoir's storage at the end of the day, never below its dead_storage_af nor above its capacity_af",
         "outlet_bound": "true on a day whose total release equals the reservoir's outlet_limit_af_day exactly, so the outlet and not the water was the binding constraint"
@@ -52,6 +54,7 @@
     },
     "summary": {
       "container": "object",
+      "field_closure": "required_fields is the whole of the object: a summary carries exactly those members and no other, so a run may add no diagnostic, timing or vendor field of its own beside them",
       "field_notes": {
         "curtailment_count": "every curtailment the run raised, counted in full and before the cap is applied to the record",
         "deficit_led_service_count": "the reservoir-days on which at least one right carried a deficit and so led the day's order, counted once per reservoir-day however many led",
@@ -105,6 +108,7 @@
   "reconciled_inputs": {
     "gauge_readings": {
       "container": "array",
+      "field_closure": "record_fields is the whole of a record: each rebuilt reading carries exactly those members and no other",
       "field_notes": {
         "corrected_inflow_af": "derived rather than carried: the surviving sources record only the raw stage, and the board's minutes settle how a raw stage is brought onto the basin datum, so this field is computed during the rebuild and is not present on the truncated rows",
         "quality": "`good` on a reading the basin office accepts and `suspect` on one it has marked; the governing decision for a suspect reading is in the board's minutes, not here"

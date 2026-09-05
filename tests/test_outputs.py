@@ -61,6 +61,72 @@ def test_corrected_stage_is_the_raw_stage_plus_the_datum_offset():
         assert r["corrected_inflow_af"] == expected, r["reading_id"]
 
 
+# The reading fields an amendment may overwrite: everything the record declares
+# except the identity the replay is keyed on and the stage the datum derives.
+MUTABLE_FIELDS = frozenset(READING_KEYS) - {"reading_id", "corrected_inflow_af"}
+
+
+def test_an_amendment_the_minute_ignores_leaves_its_reading_alone():
+    """#BAS-8170 names three amendments that do nothing, and one restore.
+
+    None of them was exercised anywhere: the journal amends only quality and
+    raw_inflow_af, so a rebuild that took every amendment at face value agreed
+    with the governed series and nothing here could tell the two apart. The
+    journal now carries one of each, against readings no other entry touches,
+    and every one of them has to leave its reading exactly as the snapshot had
+    it -- the identity, the derived stage, an undeclared field, and a restore of
+    a reading that was never retracted.
+    """
+    journal = _load_json(JOURNAL_PATH)
+    snapshot = {r["reading_id"]: r for r in _load_json(SNAPSHOT_PATH)}
+    series = {r["reading_id"]: r for r in _load_json(SERIES_PATH)}
+    offsets = {d["sensor"]: d["datum_offset_af"] for d in _load_json(DATUM_PATH)}
+
+    ignored = [c for c in journal
+               if (c["kind"] == "amend" and c.get("field") not in MUTABLE_FIELDS)
+               or (c["kind"] == "restore" and not any(
+                   e["kind"] == "retract" and e["reading_id"] == c["reading_id"]
+                   and e["seq"] < c["seq"] for e in journal))]
+    named = {c["field"] for c in ignored if c["kind"] == "amend"}
+    assert named >= {"reading_id", "corrected_inflow_af"}, named
+    assert named - set(READING_KEYS), "no amendment names an undeclared field"
+    assert any(c["kind"] == "restore" for c in ignored), "no bare restore in the journal"
+
+    for change in ignored:
+        rid = change["reading_id"]
+        if rid not in snapshot:
+            continue
+        was, now = snapshot[rid], series.get(rid)
+        assert now is not None, f"{rid} left the series over an entry that does nothing"
+        for field in MUTABLE_FIELDS:
+            assert now[field] == was[field], (
+                f"{rid} carries {field}={now[field]!r} where the snapshot had "
+                f"{was[field]!r}; the {change['kind']} naming "
+                f"{change.get('field', '-')} was not ignored")
+        assert now["corrected_inflow_af"] == max(
+            0, was["raw_inflow_af"] + offsets.get(was["sensor"], 0))
+
+
+def test_a_change_naming_a_reading_the_snapshot_never_carried_is_ignored():
+    """#BAS-8170's last clause, which the shipped journal never reached before.
+
+    The journal now names two readings the snapshot does not carry, one amended
+    and one retracted. Neither may conjure a row into the rebuilt series, and the
+    retraction of a reading that was never there must not take anything else out.
+    """
+    journal = _load_json(JOURNAL_PATH)
+    snapshot = {r["reading_id"] for r in _load_json(SNAPSHOT_PATH)}
+    series = {r["reading_id"] for r in _load_json(SERIES_PATH)}
+    unknown = sorted({c["reading_id"] for c in journal
+                      if c["reading_id"] not in snapshot})
+    assert len(unknown) >= 2, unknown
+    assert {c["kind"] for c in journal if c["reading_id"] in set(unknown)} >= {
+        "amend", "retract"}, "the unknown ids are all of one kind"
+    for rid in unknown:
+        assert rid not in series, (
+            f"{rid} reached the rebuilt series though the snapshot never carried it")
+
+
 def test_wrong_replays_differ_from_the_governed_series():
     """Four plausible misreadings of the recovery each give a different series."""
     expected = FIXTURE["recovered_series_digest"]
@@ -74,7 +140,9 @@ def test_wrong_replays_differ_from_the_governed_series():
         held = {}
         for c in (sorted(journal, key=lambda x: x["seq"]) if by_seq else journal):
             k, kind = c["reading_id"], c["kind"]
-            if kind == "amend" and k in live:
+            if kind == "amend" and k in live and c["field"] in MUTABLE_FIELDS:
+                # #BAS-8170: an amendment naming reading_id, corrected_inflow_af
+                # or a field the record does not declare is ignored
                 live[k][c["field"]] = c["value"]
             elif kind == "retract" and k in live:
                 held[k] = dict(live.pop(k))
@@ -829,17 +897,36 @@ def test_a_run_writes_nothing_outside_its_output_directory():
     staged = work / "gauges.json"
     _stage_input(SERIES_PATH, staged)
 
-    before = {str(q.relative_to(work)) for q in work.rglob("*")}
+    # Watching the per-run work area alone was not enough: the run is given
+    # HOME=/candidate-work and that directory is world-writable, so a scheduler
+    # calling os.CreateTemp(os.Getenv("HOME"), ...) -- or dropping a file in /tmp
+    # -- wrote outside its output directory and nothing here saw it. Every place
+    # the run can write is enumerated either side.
+    watched = [work, Path(CHILD_ENV["HOME"]), Path("/tmp"), Path("/var/tmp")]
+
+    def sweep():
+        seen = set()
+        for root in watched:
+            if not root.exists():
+                continue
+            for q in root.rglob("*"):
+                seen.add(str(q))
+        return seen
+
+    before = sweep()
     result = _run_agent(
         [binary, "--input", str(staged), "--output-dir", str(out_dir)], cwd=work)
     assert result.returncode == 0, (
         f"the run exited {result.returncode}\n"
         f"stdout: {result.stdout[-2000:]}\nstderr: {result.stderr[-2000:]}")
-    after = {str(q.relative_to(work)) for q in work.rglob("*")}
-    written = sorted(after - before)
-    assert written == ["output/curtailment_queue.jsonl", "output/release_schedule.json",
-                       "output/summary.json"], (
-        f"the run wrote outside its output directory: {written}")
+    written = sorted(q for q in sweep() - before)
+    expected = sorted(str(out_dir / n) for n in (
+        "curtailment_queue.jsonl", "release_schedule.json", "summary.json"))
+    assert written == expected, (
+        f"the run wrote outside its output directory: "
+        f"{[q for q in written if q not in expected]}")
+    # and it is the real run being scoped, not a run that did nothing
+    assert _load_json(out_dir / "summary.json") == FIXTURE["primary"]["summary"]
 
 
 def test_run_is_idempotent(primary_outputs):
