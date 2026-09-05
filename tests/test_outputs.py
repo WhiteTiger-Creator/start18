@@ -206,7 +206,12 @@ def test_releases_respect_the_outlet_limit_and_the_dead_pool(primary_outputs):
 
 
 def test_summary_counts_track_the_artifacts(primary_outputs):
-    """The summary's own totals agree with the artifacts beside it."""
+    """The summary's own totals agree with the artifacts beside it.
+
+    Compared exactly, and no tolerance belongs here: release_contract.json types
+    every one of these fields an integer and test_summary_schema_and_types holds
+    the run to that before this test reads them. Acre-feet are whole here.
+    """
     _, summary, schedule, queue = primary_outputs
     assert summary["reading_count"] == len(_load_json(SERIES_PATH))
     assert summary["reservoir_count"] == len(_load_json(RESERVOIR_PATH))
@@ -264,9 +269,10 @@ def _probe(readings, reservoirs, rights, *, horizon=1, curtail_year=1960,
     try:
         _write_json(RESERVOIR_PATH, reservoirs)
         _write_json(RIGHTS_PATH, rights)
-        _write_json(POLICY_PATH, {"default": {
+        default = {
             "horizon_days": horizon, "curtail_below_year": curtail_year,
-            "flood_release_fraction_pct": flood_pct, "max_curtailments": max_curtail}})
+            "flood_release_fraction_pct": flood_pct, "max_curtailments": max_curtail}
+        _write_json(POLICY_PATH, {"default": default})
         _write_json(staged, readings)
         os.chmod(staged, 0o644)
         return _run_pipeline(input_path=staged)
@@ -739,6 +745,17 @@ def test_stale_contents_are_cleared_from_a_given_output_directory():
     after = out_dir.stat()
     assert (after.st_ino, after.st_dev) == (before.st_ino, before.st_dev), (
         "the output directory was removed and recreated rather than emptied")
+    # Three names and an exit code are not the deliverable. A scheduler that
+    # cleared the directory and wrote three empty documents whenever it was
+    # handed an explicit --output-dir satisfied every line above while staying
+    # correct on every other run here. No --input is passed, so this run reads
+    # the same series the graded one does and owes the same three artifacts.
+    assert _load_json(out_dir / "summary.json") == FIXTURE["primary"]["summary"], (
+        "the run cleared the directory but did not produce the graded result")
+    assert _digest(_load_json(out_dir / "release_schedule.json")) == \
+        FIXTURE["primary"]["schedule_digest"]
+    assert _digest(_load_jsonl(out_dir / "curtailment_queue.jsonl")) == \
+        FIXTURE["primary"]["queue_digest"]
 
 
 def test_policy_path_actually_influences_the_output():
@@ -972,3 +989,121 @@ def test_shipped_contract_matches_the_golden_copy():
     """
     shipped = json.loads(SPEC_PATH.read_text(encoding="utf-8"))
     assert shipped == json.loads(GOLDEN_CONTRACT_PATH.read_text(encoding="utf-8"))
+
+
+def _pair():
+    """A senior and a junior right on the same reservoir, each entitled to 50."""
+    return [_right("WR-0001", year=1900, daily=50),
+            _right("WR-0002", year=1990, daily=50)]
+
+
+def test_a_right_left_short_leads_the_next_day_ahead_of_a_senior_one():
+    """#BAS-8214: a deficit outranks priority itself.
+
+    The reversed draft #BAS-8060 opened every day on the register's own order, so
+    the senior right would take the only 50 acre-feet on both days and the junior
+    would go short twice. Under the final rule the junior carries a deficit out of
+    day 0 and leads on day 1, and it is the SENIOR that goes short.
+    """
+    readings = [_reading("GR-1", day=0, corrected=50),
+                _reading("GR-2", day=1, corrected=50)]
+    _, summary, schedule, queue = _probe(
+        readings, [_reservoir(outlet=50, opening=0)], _pair(), horizon=2)
+    assert [r["rights_af"] for r in schedule] == [50, 50], schedule
+    assert [(r["day"], r["right_id"]) for r in queue] == [
+        (0, "WR-0002"), (1, "WR-0001")], (
+        "the right carrying a deficit did not lead the second day")
+    assert summary["deficit_led_service_count"] == 1
+    # a deficit is a place in the queue and never a quantity
+    assert summary["total_release_af"] == 100
+    assert summary["total_shortfall_af"] == 100
+
+
+def test_a_deficit_changes_the_order_and_never_the_water():
+    """The day releases exactly what the register's own order would have released.
+
+    The two-day run above against a one-day run of the same basin: every quantity
+    on day 0 has to agree, and the second day may move the name in the queue but
+    not an acre-foot on the schedule row.
+    """
+    readings = [_reading("GR-1", day=0, corrected=50),
+                _reading("GR-2", day=1, corrected=50)]
+    _, summary, schedule, queue = _probe(
+        readings, [_reservoir(outlet=50, opening=0)], _pair(), horizon=2)
+    for row in schedule:
+        assert (row["rights_af"], row["total_release_af"]) == (50, 50), row
+        assert row["closing_storage_af"] == 0, row
+    assert summary["total_release_af"] == 100
+    # the two days differ only in who was left short
+    assert [r["right_id"] for r in queue] == ["WR-0002", "WR-0001"]
+    assert [r["shortfall_af"] for r in queue] == [50, 50]
+
+
+def test_two_rights_carrying_deficits_keep_priority_order_between_them():
+    """A deficit lifts a right over rights carrying none, and no further.
+
+    Two of the three go short on day 0. Both lead on day 1, ordered between
+    themselves by priority year, so the 1950 right is served and the 1990 right
+    goes short again -- alongside the senior, which now carries nothing.
+    """
+    rights = [_right("WR-0001", year=1900, daily=50),
+              _right("WR-0002", year=1950, daily=50),
+              _right("WR-0003", year=1990, daily=50)]
+    readings = [_reading("GR-1", day=0, corrected=50),
+                _reading("GR-2", day=1, corrected=50)]
+    _, _, _, queue = _probe(readings, [_reservoir(outlet=50, opening=0)], rights,
+                            horizon=2)
+    assert [r["right_id"] for r in queue if r["day"] == 0] == ["WR-0002", "WR-0003"]
+    assert [r["right_id"] for r in queue if r["day"] == 1] == ["WR-0001", "WR-0003"], (
+        "the two rights carrying deficits were not ordered by priority between "
+        "themselves, or the senior was not displaced by both")
+
+
+def test_a_deficit_is_cleared_the_moment_the_right_is_served_in_full():
+    """A right made whole stops leading, so the register's own order returns."""
+    readings = [_reading("GR-1", day=0, corrected=50),
+                _reading("GR-2", day=1, corrected=100),
+                _reading("GR-3", day=2, corrected=50)]
+    _, _, _, queue = _probe(readings, [_reservoir(outlet=100, opening=0)], _pair(),
+                            horizon=3)
+    assert [(r["day"], r["right_id"]) for r in queue] == [
+        (0, "WR-0002"), (2, "WR-0002")], (
+        "the deficit outlived the day the right was served in full")
+
+
+def test_a_part_served_right_keeps_the_deficit_it_is_still_carrying():
+    """#BAS-8214 puts no clock on a deficit; only full service clears it.
+
+    The junior goes short on day 0 and leads on day 1, where it is served in part
+    and stays short -- so it is still carrying on day 2, alongside the senior that
+    day 1 displaced. Both lead there, ordered by priority between themselves.
+    """
+    readings = [_reading("GR-1", day=0, corrected=50),
+                _reading("GR-2", day=1, corrected=25),
+                _reading("GR-3", day=2, corrected=100)]
+    _, summary, _, queue = _probe(readings, [_reservoir(outlet=100, opening=0)],
+                                  _pair(), horizon=3)
+    assert [(r["day"], r["right_id"], r["shortfall_af"]) for r in queue] == [
+        (0, "WR-0002", 50), (1, "WR-0001", 50), (1, "WR-0002", 25)], (
+        "the junior did not lead day 1, or a part-served right dropped its deficit")
+    assert summary["deficit_led_service_count"] == 2
+
+
+def test_a_flood_day_records_the_curtailment_but_raises_no_deficit():
+    """#BAS-8214: a shortage the flood operation caused leaves no deficit behind.
+
+    Day 0 runs a flood release that takes all but 50 acre-feet of the outlet, so
+    the junior is short and queued as flood_operation. Nothing is carried out of
+    it, so day 1 opens on the register's own order and the junior goes short
+    again; had the flood day raised a deficit, the senior would be short instead.
+    """
+    readings = [_reading("GR-1", day=0, corrected=5_000),
+                _reading("GR-2", day=1, corrected=0)]
+    _, _, schedule, queue = _probe(
+        readings, [_reservoir(outlet=4_850, flood_pool=200, dead=100, opening=0)],
+        _pair(), horizon=2, flood_pct=100)
+    assert schedule[0]["flood_af"] > 0, "the crafted day ran no flood release"
+    assert schedule[1]["flood_af"] == 0, "day 1 floods too, so it settles nothing"
+    assert [(r["day"], r["right_id"], r["reason"]) for r in queue] == [
+        (0, "WR-0002", "flood_operation"), (1, "WR-0002", "supply_short")], (
+        "a flood day left a deficit behind, which #BAS-8214 forbids")

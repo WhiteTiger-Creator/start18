@@ -54,6 +54,7 @@
       "container": "object",
       "field_notes": {
         "curtailment_count": "every curtailment the run raised, counted in full and before the cap is applied to the record",
+        "deficit_led_service_count": "the reservoir-days on which at least one right carried a deficit and so led the day's order, counted once per reservoir-day however many led",
         "outlet_bound_day_count": "the scheduled rows whose outlet_bound is true",
         "reading_count": "the readings in the gauge series handed to --input, counted as read and before any of them is set aside as suspect",
         "recorded_curtailment_count": "the curtailment rows the queue actually carries, so it is curtailment_count capped at effective_max_curtailments",
@@ -65,6 +66,7 @@
       },
       "field_types": {
         "curtailment_count": "integer",
+        "deficit_led_service_count": "integer",
         "effective_curtail_year": "integer",
         "effective_flood_fraction": "integer",
         "effective_horizon_days": "integer",
@@ -94,7 +96,8 @@
         "effective_horizon_days",
         "effective_curtail_year",
         "effective_flood_fraction",
-        "effective_max_curtailments"
+        "effective_max_curtailments",
+        "deficit_led_service_count"
       ],
       "serialisation": "JSON object, two-space indent, trailing newline"
     }

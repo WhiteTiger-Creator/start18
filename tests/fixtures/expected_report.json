@@ -1,9 +1,10 @@
 {
   "alternate": {
-    "queue_digest": "241f89f912c56ad3734b4c200e253951fbb09a8af028c910bd13eb37bd833457",
+    "queue_digest": "dec0a3e6696d2d792bf56d64fa7a91e56e6f4b513cef40e4b89a0df19a299a86",
     "schedule_digest": "0221f990b5bdcb6bbe91e3fd25338ce72495f22c6e847f22ca80c336937f1fc8",
     "summary": {
-      "curtailment_count": 5150,
+      "curtailment_count": 5170,
+      "deficit_led_service_count": 198,
       "effective_curtail_year": 1960,
       "effective_flood_fraction": 35,
       "effective_horizon_days": 180,
@@ -21,10 +22,11 @@
   },
   "broken_scheduler_sha256": "a3d958591f602c4c21ebfa63c96570f5657adab5396c7da7ccf15827a729ba7a",
   "primary": {
-    "queue_digest": "b2b25ad9c8766d82e91134849c10e1091cf0544a8dfb383ceef5b015decd562b",
+    "queue_digest": "5bf87c5abc7fab600440183aa6db079457a971860996d7bba5dcdc4838b0e82a",
     "schedule_digest": "83f6664b1724299d938e08f0e6ff368afdae9e7401a65187dda1161b5c8bbfbe",
     "summary": {
-      "curtailment_count": 5454,
+      "curtailment_count": 5487,
+      "deficit_led_service_count": 294,
       "effective_curtail_year": 1960,
       "effective_flood_fraction": 35,
       "effective_horizon_days": 180,
@@ -42,6 +44,6 @@
   },
   "recovered_reading_count": 1930,
   "recovered_series_digest": "97b4b10d05b8ae9155e517cce946cd4287aa0e0c4b56490d991097bb0c30b3d0",
-  "rule_sources_digest": "58b78b99ffdddeb9627d7f0866a51d5bacc10f48f939d6027d2606c4cacf90bc",
+  "rule_sources_digest": "5f4a3e8e12ff5ab5ccf7e301f9ff13588d141a3d3e39d861c8f94903ec5a0ee6",
   "shipped_truncated_digest": "9fa9b98e9594177a2ce324f8da7a3a851e365839536b7b09f54ade14d3b6b8fc"
 }

@@ -160,10 +160,14 @@ func main() {
 	schedule := make([]releaseRow, 0)
 	curtailments := make([]curtailRow, 0)
 	var totalRelease, totalShort int64
-	outletBoundDays := 0
+	outletBoundDays, deficitLedDays := 0, 0
 
 	for _, res := range reservoirs {
 		storage := res.OpeningStorage
+		// #BAS-8214: the rights carrying a deficit against this reservoir. A
+		// deficit is a place in the queue and never a quantity, so the set of
+		// rights carrying one is all that has to be kept.
+		carrying := map[string]bool{}
 		for day := 0; day < horizon; day++ {
 			storage += inflow[res.ReservoirID][day]
 			if storage > res.CapacityAF {
@@ -205,8 +209,25 @@ func main() {
 				room -= flood
 			}
 
-			var served int64
+			// #BAS-8214: rights carrying a deficit lead, keeping the ordinary
+			// priority order among themselves; the rest follow in theirs. byRes is
+			// already in priority order, so one pass over it preserves both.
+			leading := make([]right, 0, len(byRes[res.ReservoirID]))
+			following := make([]right, 0, len(byRes[res.ReservoirID]))
 			for _, w := range byRes[res.ReservoirID] {
+				if carrying[w.RightID] {
+					leading = append(leading, w)
+				} else {
+					following = append(following, w)
+				}
+			}
+			if len(leading) > 0 {
+				deficitLedDays++
+			}
+			order := append(leading, following...)
+
+			var served int64
+			for _, w := range order {
 				want := w.DailyAF
 				give := want
 				if give > room {
@@ -234,6 +255,14 @@ func main() {
 						ShortfallAF: want - give, Reason: reason,
 					})
 					totalShort += want - give
+					// A flood day raises no deficit: the shortage is the flood
+					// operation's doing. The curtailment is recorded either way.
+					if flood == 0 {
+						carrying[w.RightID] = true
+					}
+				} else {
+					// served in full, so the deficit it was carrying is cleared
+					delete(carrying, w.RightID)
 				}
 			}
 
@@ -309,6 +338,7 @@ func main() {
 		"effective_curtail_year":     curtailBelow,
 		"effective_flood_fraction":   floodPct,
 		"effective_max_curtailments": maxCurtail,
+		"deficit_led_service_count":  deficitLedDays,
 	}
 	writeJSON(*outputDir+"/summary.json", summary)
 	writeJSON(*outputDir+"/release_schedule.json", schedule)

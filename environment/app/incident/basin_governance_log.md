@@ -50,6 +50,8 @@ The documentation owner recorded a maintenance note against the telemetry host. 
 
 - 2026-02-24: The escalation desk logged a correction request from a rights holder. A scheduled restart moved by twenty minutes and nobody noticed downstream. It was recorded and nothing was carried forward.
 
+> **Board minute (2026-03-04 - #BAS-8060)** Rosa: an appropriation that goes short on a day has no standing on the next. Every day opens on the register's own priority order, the oldest appropriation first, whatever happened the day before.
+
 > **Board minute (2026-03-05 - #BAS-8038)** Priya: where the day cannot meet the appropriations in full, the shortage is prorated across every right on the reservoir in proportion to its entitlement.
 
 - 2026-03-01: The gauge-network team wrote up an overnight page that had cleared itself. Storage on the staging host was extended after the export outgrew its allocation. It was noted at the weekly slot.
@@ -212,6 +214,7 @@ The documentation owner recorded a maintenance note against the telemetry host. 
 
 > **Board minute (2026-06-03 - #BAS-8210)** Priya: Operating policy baseline, read from /app/data/operating_policy.json at that fixed absolute path. Any field the policy file omits keeps its baseline: horizon_days = 180; curtail_below_year = 1960; flood_release_fraction_pct = 35; max_curtailments = 2400.
 
+> **Board minute (2026-06-05 - #BAS-8214)** Marek: Deficit precedence, final. An appropriation left short on a day carries a deficit against that reservoir, and while it carries one the right is served AHEAD of every right carrying none, whatever the two priority years are. Rights carrying a deficit are served among themselves in the ordinary priority order, and the rest follow in theirs. A deficit is nothing but a place in the queue: the right still asks for its own daily entitlement and no more, and the day releases exactly what it would have released anyway. A deficit is cleared the moment the right is served in full, and until then it is carried however many days pass. A day the reservoir ran a flood release raises no deficit, the shortage being the flood operation's doing rather than the basin's; the curtailment is recorded as ever.
 - 2026-06-13: The duty hydrologist revisited a control the auditors had asked about. Two tickets covering the same request were merged. The entry was left as it stands at the same meeting.
 
 - 2026-06-08: The dam tender logged a correction request from a rights holder. A spillway inspection completed inside its window with nothing to note. The thread was archived with no change to any published figure.
