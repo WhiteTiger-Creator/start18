@@ -6,7 +6,7 @@
       "/app/data/operating_policy.json"
     ],
     "input": "--input selects the gauge series only; default /app/data/gauge_readings.json",
-    "output_dir": "--output-dir selects the output directory; default /app/output",
+    "output_dir": "--output-dir selects the output directory; default /app/output. The paths named under outputs are what a run writes with the flag left at its default. Where the flag is given, it REPLACES the directory component of all three: the file names never change, and a run writes them inside the directory it was handed and nowhere else, so --output-dir /somewhere/else writes /somewhere/else/summary.json, /somewhere/else/release_schedule.json and /somewhere/else/curtailment_queue.jsonl",
     "output_dir_handling": "the run clears what an earlier run left in the output directory and writes its own three files there; the directory itself is not removed and recreated, since the run does not own the path it writes into"
   },
   "contract_version": "basin-release-v1",
@@ -23,6 +23,7 @@
       ],
       "field_closure": "element_fields is the whole of a row: each row carries exactly those members and no other",
       "path": "/app/output/curtailment_queue.jsonl",
+      "path_note": "the default path; --output-dir replaces the directory component while the file name stays as it is",
       "reasons": [
         "flood_operation",
         "supply_short"
@@ -49,6 +50,7 @@
         "outlet_bound": "true on a day whose total release equals the reservoir's outlet_limit_af_day exactly, so the outlet and not the water was the binding constraint"
       },
       "path": "/app/output/release_schedule.json",
+      "path_note": "the default path; --output-dir replaces the directory component while the file name stays as it is",
       "serialisation": "JSON array, two-space indent, trailing newline",
       "sort": "ascending by reservoir_id, then day"
     },
@@ -85,6 +87,7 @@
         "total_shortfall_af": "integer"
       },
       "path": "/app/output/summary.json",
+      "path_note": "the default path; --output-dir replaces the directory component while the file name stays as it is",
       "required_fields": [
         "schema_version",
         "reading_count",

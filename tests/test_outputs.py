@@ -1183,11 +1183,18 @@ def test_a_flood_day_records_the_curtailment_but_raises_no_deficit():
     the junior is short and queued as flood_operation. Nothing is carried out of
     it, so day 1 opens on the register's own order and the junior goes short
     again; had the flood day raised a deficit, the senior would be short instead.
+
+    The reservoir opens at its dead pool rather than below it. The earlier form
+    started at nought against a dead pool of a hundred, which no minute and no
+    line of the contract describes: a run that read the contract's "closing
+    storage is never below the dead pool" as a floor on the opening figure too,
+    and clamped, produced different arithmetic and failed here on a rule this
+    test is not about. The crafted basin now stays inside the documented domain.
     """
     readings = [_reading("GR-1", day=0, corrected=5_000),
                 _reading("GR-2", day=1, corrected=0)]
     _, _, schedule, queue = _probe(
-        readings, [_reservoir(outlet=4_850, flood_pool=200, dead=100, opening=0)],
+        readings, [_reservoir(outlet=4_950, flood_pool=100, dead=0, opening=0)],
         _pair(), horizon=2, flood_pct=100)
     assert schedule[0]["flood_af"] > 0, "the crafted day ran no flood release"
     assert schedule[1]["flood_af"] == 0, "day 1 floods too, so it settles nothing"
