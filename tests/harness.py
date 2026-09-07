@@ -377,6 +377,7 @@ __all__ = [
     "os",
     "shutil",
     "signal",
+    "stat",
     "subprocess",
     "tempfile",
     "time",

@@ -890,6 +890,56 @@ def test_the_scheduler_is_one_go_source_compiled_from_that_file_alone():
             f"{siblings}\n\n{exc}") from exc
 
 
+_ABSENT = object()
+
+
+def _writable_roots(work: Path) -> list:
+    """Every directory the unprivileged run could drop a file into.
+
+    Discovered rather than enumerated: the caller's work area and the HOME it is
+    handed, the agent-visible tree under /app, every writable tmpfs the mount
+    table names, and every world-writable directory within two levels of the
+    root. /proc and /sys are skipped -- they carry no candidate writes and
+    walking them is expensive.
+    """
+    roots = {work, Path(CHILD_ENV["HOME"]), Path("/tmp"), Path("/var/tmp"),
+             Path("/dev/shm"), Path("/run"), Path("/var/lock"), APP}
+    try:
+        for line in Path("/proc/mounts").read_text(encoding="utf-8").splitlines():
+            parts = line.split()
+            if len(parts) >= 3 and parts[2] in ("tmpfs", "ramfs"):
+                roots.add(Path(parts[1]))
+    except OSError:
+        pass
+    # /proc and /sys carry no candidate writes and are expensive to walk. /dev is
+    # world-writable in an ordinary container, so the scan below would take the
+    # whole device tree -- symlinked directories and all -- as one watched root
+    # and swallow /dev/shm into it. The tmpfs mounts under it are named above and
+    # by the mount table instead.
+    skip = ("/proc", "/sys", "/dev")
+    for depth_one in Path("/").iterdir():
+        if str(depth_one) in skip or depth_one.is_symlink() or not depth_one.is_dir():
+            continue
+        try:
+            entries = [depth_one] + [q for q in depth_one.iterdir() if q.is_dir()
+                                     and not q.is_symlink()]
+        except OSError:
+            continue
+        for entry in entries:
+            try:
+                if entry.stat().st_mode & stat.S_IWOTH:
+                    roots.add(entry)
+            except OSError:
+                continue
+    # a root already inside another watched root adds nothing but time
+    ordered = sorted(roots, key=lambda q: len(str(q)))
+    kept: list = []
+    for root in ordered:
+        if not any(str(root).startswith(str(k) + "/") for k in kept):
+            kept.append(root)
+    return kept
+
+
 def test_a_run_writes_nothing_outside_its_output_directory():
     """instruction.md scopes a run to its --output-dir, and nothing checked it.
 
@@ -909,17 +959,42 @@ def test_a_run_writes_nothing_outside_its_output_directory():
     # Watching the per-run work area alone was not enough: the run is given
     # HOME=/candidate-work and that directory is world-writable, so a scheduler
     # calling os.CreateTemp(os.Getenv("HOME"), ...) -- or dropping a file in /tmp
-    # -- wrote outside its output directory and nothing here saw it. Every place
-    # the run can write is enumerated either side.
-    watched = [work, Path(CHILD_ENV["HOME"]), Path("/tmp"), Path("/var/tmp")]
+    # -- wrote outside its output directory and nothing here saw it.
+    #
+    # Naming those by hand was not enough either. An ordinary container mounts a
+    # writable tmpfs at /dev/shm, which is under none of them, so a run that
+    # wrote there was outside its output directory and outside the sweep: the
+    # set difference stayed empty and the test passed it. The watched set is
+    # therefore discovered rather than listed -- the named directories, the
+    # agent tree the run can reach, every writable tmpfs the mount table
+    # carries, and every world-writable directory within two levels of the root
+    # -- so a writable path this image happens to carry is watched whether or
+    # not it was thought of here.
+    watched = _writable_roots(work)
+
+    if Path("/dev/shm").is_dir():
+        assert any(Path("/dev/shm") == root or str(Path("/dev/shm")).startswith(
+            str(root) + "/") for root in watched), (
+            "the writable tmpfs at /dev/shm is watched by nothing here, so a "
+            "scratch file left there would not be seen")
 
     def sweep():
-        seen = set()
+        # Existence alone is not enough. A scheduler that writes the SAME scratch
+        # path on every run has already created it by the time this test snapshots
+        # -- earlier tests in this suite drive the same binary -- so a set of paths
+        # differs by nothing and the write passes unseen. Size and modification
+        # time are recorded with each file, which catches the rewrite as well as
+        # the first write.
+        seen = {}
         for root in watched:
             if not root.exists():
                 continue
-            for q in root.rglob("*"):
-                seen.add(str(q))
+            for q in [root, *root.rglob("*")]:
+                try:
+                    st = q.stat()
+                except OSError:
+                    continue
+                seen[str(q)] = (st.st_mtime_ns, st.st_size) if not q.is_dir() else None
         return seen
 
     before = sweep()
@@ -928,7 +1003,8 @@ def test_a_run_writes_nothing_outside_its_output_directory():
     assert result.returncode == 0, (
         f"the run exited {result.returncode}\n"
         f"stdout: {result.stdout[-2000:]}\nstderr: {result.stderr[-2000:]}")
-    written = sorted(q for q in sweep() - before)
+    after = sweep()
+    written = sorted(q for q, v in after.items() if before.get(q, _ABSENT) != v)
     expected = sorted(str(out_dir / n) for n in (
         "curtailment_queue.jsonl", "release_schedule.json", "summary.json"))
     assert written == expected, (
