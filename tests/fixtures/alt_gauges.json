@@ -63,15 +63,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 9368,
-    "day": 7,
-    "quality": "good",
-    "raw_inflow_af": 9048,
-    "reading_id": "GR-000008",
-    "reservoir_id": "RES-01",
-    "sensor": "float"
-  },
-  {
     "corrected_inflow_af": 18677,
     "day": 9,
     "quality": "good",
@@ -270,15 +261,6 @@
     "sensor": "acoustic"
   },
   {
-    "corrected_inflow_af": 25200,
-    "day": 34,
-    "quality": "suspect",
-    "raw_inflow_af": 25275,
-    "reading_id": "GR-000035",
-    "reservoir_id": "RES-01",
-    "sensor": "radar"
-  },
-  {
     "corrected_inflow_af": 20568,
     "day": 35,
     "quality": "good",
@@ -473,15 +455,6 @@
     "quality": "good",
     "raw_inflow_af": 7663,
     "reading_id": "GR-000060",
-    "reservoir_id": "RES-01",
-    "sensor": "pressure"
-  },
-  {
-    "corrected_inflow_af": 47981,
-    "day": 60,
-    "quality": "good",
-    "raw_inflow_af": 48121,
-    "reading_id": "GR-000061",
     "reservoir_id": "RES-01",
     "sensor": "pressure"
   },
@@ -684,15 +657,6 @@
     "sensor": "pressure"
   },
   {
-    "corrected_inflow_af": 14282,
-    "day": 85,
-    "quality": "good",
-    "raw_inflow_af": 14422,
-    "reading_id": "GR-000086",
-    "reservoir_id": "RES-01",
-    "sensor": "pressure"
-  },
-  {
     "corrected_inflow_af": 35653,
     "day": 86,
     "quality": "good",
@@ -891,15 +855,6 @@
     "sensor": "radar"
   },
   {
-    "corrected_inflow_af": 27670,
-    "day": 110,
-    "quality": "good",
-    "raw_inflow_af": 27810,
-    "reading_id": "GR-000111",
-    "reservoir_id": "RES-01",
-    "sensor": "pressure"
-  },
-  {
     "corrected_inflow_af": 19952,
     "day": 111,
     "quality": "good",
@@ -1094,15 +1049,6 @@
     "quality": "good",
     "raw_inflow_af": 10196,
     "reading_id": "GR-000138",
-    "reservoir_id": "RES-01",
-    "sensor": "radar"
-  },
-  {
-    "corrected_inflow_af": 12899,
-    "day": 138,
-    "quality": "good",
-    "raw_inflow_af": 12974,
-    "reading_id": "GR-000139",
     "reservoir_id": "RES-01",
     "sensor": "radar"
   },
@@ -1305,15 +1251,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 37147,
-    "day": 163,
-    "quality": "good",
-    "raw_inflow_af": 37147,
-    "reading_id": "GR-000164",
-    "reservoir_id": "RES-01",
-    "sensor": "acoustic"
-  },
-  {
     "corrected_inflow_af": 16113,
     "day": 164,
     "quality": "good",
@@ -1508,15 +1445,6 @@
     "quality": "good",
     "raw_inflow_af": 7422,
     "reading_id": "GR-000188",
-    "reservoir_id": "RES-02",
-    "sensor": "acoustic"
-  },
-  {
-    "corrected_inflow_af": 6472,
-    "day": 9,
-    "quality": "good",
-    "raw_inflow_af": 6472,
-    "reading_id": "GR-000190",
     "reservoir_id": "RES-02",
     "sensor": "acoustic"
   },
@@ -1719,15 +1647,6 @@
     "sensor": "acoustic"
   },
   {
-    "corrected_inflow_af": 10871,
-    "day": 33,
-    "quality": "suspect",
-    "raw_inflow_af": 10551,
-    "reading_id": "GR-000214",
-    "reservoir_id": "RES-02",
-    "sensor": "float"
-  },
-  {
     "corrected_inflow_af": 15319,
     "day": 34,
     "quality": "good",
@@ -1926,15 +1845,6 @@
     "sensor": "radar"
   },
   {
-    "corrected_inflow_af": 2433,
-    "day": 56,
-    "quality": "good",
-    "raw_inflow_af": 2113,
-    "reading_id": "GR-000237",
-    "reservoir_id": "RES-02",
-    "sensor": "float"
-  },
-  {
     "corrected_inflow_af": 3635,
     "day": 57,
     "quality": "good",
@@ -2129,15 +2039,6 @@
     "quality": "good",
     "raw_inflow_af": 9726,
     "reading_id": "GR-000261",
-    "reservoir_id": "RES-02",
-    "sensor": "radar"
-  },
-  {
-    "corrected_inflow_af": 3679,
-    "day": 82,
-    "quality": "good",
-    "raw_inflow_af": 3754,
-    "reading_id": "GR-000263",
     "reservoir_id": "RES-02",
     "sensor": "radar"
   },
@@ -2340,15 +2241,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 5888,
-    "day": 110,
-    "quality": "good",
-    "raw_inflow_af": 6028,
-    "reading_id": "GR-000291",
-    "reservoir_id": "RES-02",
-    "sensor": "pressure"
-  },
-  {
     "corrected_inflow_af": 7304,
     "day": 111,
     "quality": "good",
@@ -2545,15 +2437,6 @@
     "reading_id": "GR-000320",
     "reservoir_id": "RES-02",
     "sensor": "pressure"
-  },
-  {
-    "corrected_inflow_af": 3857,
-    "day": 140,
-    "quality": "good",
-    "raw_inflow_af": 3857,
-    "reading_id": "GR-000321",
-    "reservoir_id": "RES-02",
-    "sensor": "acoustic"
   },
   {
     "corrected_inflow_af": 5962,
@@ -2754,15 +2637,6 @@
     "sensor": "acoustic"
   },
   {
-    "corrected_inflow_af": 1978,
-    "day": 164,
-    "quality": "good",
-    "raw_inflow_af": 2053,
-    "reading_id": "GR-000345",
-    "reservoir_id": "RES-02",
-    "sensor": "radar"
-  },
-  {
     "corrected_inflow_af": 1890,
     "day": 165,
     "quality": "suspect",
@@ -2959,15 +2833,6 @@
     "reading_id": "GR-000371",
     "reservoir_id": "RES-03",
     "sensor": "pressure"
-  },
-  {
-    "corrected_inflow_af": 28622,
-    "day": 11,
-    "quality": "good",
-    "raw_inflow_af": 28697,
-    "reading_id": "GR-000372",
-    "reservoir_id": "RES-03",
-    "sensor": "radar"
   },
   {
     "corrected_inflow_af": 37387,
@@ -3168,15 +3033,6 @@
     "sensor": "radar"
   },
   {
-    "corrected_inflow_af": 37711,
-    "day": 36,
-    "quality": "good",
-    "raw_inflow_af": 37711,
-    "reading_id": "GR-000397",
-    "reservoir_id": "RES-03",
-    "sensor": "acoustic"
-  },
-  {
     "corrected_inflow_af": 45552,
     "day": 37,
     "quality": "good",
@@ -3373,15 +3229,6 @@
     "reading_id": "GR-000421",
     "reservoir_id": "RES-03",
     "sensor": "acoustic"
-  },
-  {
-    "corrected_inflow_af": 143492,
-    "day": 61,
-    "quality": "good",
-    "raw_inflow_af": 143632,
-    "reading_id": "GR-000422",
-    "reservoir_id": "RES-03",
-    "sensor": "pressure"
   },
   {
     "corrected_inflow_af": 77474,
@@ -3582,15 +3429,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 21411,
-    "day": 86,
-    "quality": "good",
-    "raw_inflow_af": 21411,
-    "reading_id": "GR-000447",
-    "reservoir_id": "RES-03",
-    "sensor": "acoustic"
-  },
-  {
     "corrected_inflow_af": 26758,
     "day": 88,
     "quality": "good",
@@ -3789,15 +3627,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 13333,
-    "day": 113,
-    "quality": "good",
-    "raw_inflow_af": 13473,
-    "reading_id": "GR-000474",
-    "reservoir_id": "RES-03",
-    "sensor": "pressure"
-  },
-  {
     "corrected_inflow_af": 15940,
     "day": 114,
     "quality": "good",
@@ -3992,15 +3821,6 @@
     "quality": "good",
     "raw_inflow_af": 27859,
     "reading_id": "GR-000496",
-    "reservoir_id": "RES-03",
-    "sensor": "radar"
-  },
-  {
-    "corrected_inflow_af": 10512,
-    "day": 136,
-    "quality": "good",
-    "raw_inflow_af": 10587,
-    "reading_id": "GR-000497",
     "reservoir_id": "RES-03",
     "sensor": "radar"
   },
@@ -4203,15 +4023,6 @@
     "sensor": "acoustic"
   },
   {
-    "corrected_inflow_af": 11237,
-    "day": 162,
-    "quality": "good",
-    "raw_inflow_af": 11312,
-    "reading_id": "GR-000523",
-    "reservoir_id": "RES-03",
-    "sensor": "radar"
-  },
-  {
     "corrected_inflow_af": 31190,
     "day": 164,
     "quality": "good",
@@ -4410,15 +4221,6 @@
     "sensor": "pressure"
   },
   {
-    "corrected_inflow_af": 7086,
-    "day": 9,
-    "quality": "good",
-    "raw_inflow_af": 7161,
-    "reading_id": "GR-000550",
-    "reservoir_id": "RES-04",
-    "sensor": "radar"
-  },
-  {
     "corrected_inflow_af": 29336,
     "day": 10,
     "quality": "good",
@@ -4613,15 +4415,6 @@
     "quality": "good",
     "raw_inflow_af": 26489,
     "reading_id": "GR-000572",
-    "reservoir_id": "RES-04",
-    "sensor": "acoustic"
-  },
-  {
-    "corrected_inflow_af": 8681,
-    "day": 32,
-    "quality": "good",
-    "raw_inflow_af": 8681,
-    "reading_id": "GR-000573",
     "reservoir_id": "RES-04",
     "sensor": "acoustic"
   },
@@ -4824,15 +4617,6 @@
     "sensor": "pressure"
   },
   {
-    "corrected_inflow_af": 16047,
-    "day": 57,
-    "quality": "good",
-    "raw_inflow_af": 15727,
-    "reading_id": "GR-000598",
-    "reservoir_id": "RES-04",
-    "sensor": "float"
-  },
-  {
     "corrected_inflow_af": 15974,
     "day": 58,
     "quality": "suspect",
@@ -5029,15 +4813,6 @@
     "reading_id": "GR-000622",
     "reservoir_id": "RES-04",
     "sensor": "float"
-  },
-  {
-    "corrected_inflow_af": 22720,
-    "day": 82,
-    "quality": "good",
-    "raw_inflow_af": 22795,
-    "reading_id": "GR-000623",
-    "reservoir_id": "RES-04",
-    "sensor": "radar"
   },
   {
     "corrected_inflow_af": 24700,
@@ -5238,15 +5013,6 @@
     "sensor": "radar"
   },
   {
-    "corrected_inflow_af": 14873,
-    "day": 108,
-    "quality": "good",
-    "raw_inflow_af": 14553,
-    "reading_id": "GR-000649",
-    "reservoir_id": "RES-04",
-    "sensor": "float"
-  },
-  {
     "corrected_inflow_af": 17928,
     "day": 110,
     "quality": "good",
@@ -5443,15 +5209,6 @@
     "reading_id": "GR-000674",
     "reservoir_id": "RES-04",
     "sensor": "float"
-  },
-  {
-    "corrected_inflow_af": 12922,
-    "day": 134,
-    "quality": "good",
-    "raw_inflow_af": 12922,
-    "reading_id": "GR-000675",
-    "reservoir_id": "RES-04",
-    "sensor": "acoustic"
   },
   {
     "corrected_inflow_af": 19324,
@@ -5652,15 +5409,6 @@
     "sensor": "acoustic"
   },
   {
-    "corrected_inflow_af": 17831,
-    "day": 160,
-    "quality": "good",
-    "raw_inflow_af": 17511,
-    "reading_id": "GR-000701",
-    "reservoir_id": "RES-04",
-    "sensor": "float"
-  },
-  {
     "corrected_inflow_af": 4630,
     "day": 161,
     "quality": "good",
@@ -5857,15 +5605,6 @@
     "reading_id": "GR-000724",
     "reservoir_id": "RES-05",
     "sensor": "float"
-  },
-  {
-    "corrected_inflow_af": 20923,
-    "day": 4,
-    "quality": "good",
-    "raw_inflow_af": 20998,
-    "reading_id": "GR-000725",
-    "reservoir_id": "RES-05",
-    "sensor": "radar"
   },
   {
     "corrected_inflow_af": 24160,
@@ -6066,15 +5805,6 @@
     "sensor": "radar"
   },
   {
-    "corrected_inflow_af": 27274,
-    "day": 28,
-    "quality": "good",
-    "raw_inflow_af": 27414,
-    "reading_id": "GR-000749",
-    "reservoir_id": "RES-05",
-    "sensor": "pressure"
-  },
-  {
     "corrected_inflow_af": 7619,
     "day": 29,
     "quality": "good",
@@ -6273,15 +6003,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 34943,
-    "day": 53,
-    "quality": "good",
-    "raw_inflow_af": 35083,
-    "reading_id": "GR-000774",
-    "reservoir_id": "RES-05",
-    "sensor": "pressure"
-  },
-  {
     "corrected_inflow_af": 32767,
     "day": 54,
     "quality": "good",
@@ -6476,15 +6197,6 @@
     "quality": "good",
     "raw_inflow_af": 113723,
     "reading_id": "GR-000799",
-    "reservoir_id": "RES-05",
-    "sensor": "acoustic"
-  },
-  {
-    "corrected_inflow_af": 10572,
-    "day": 80,
-    "quality": "good",
-    "raw_inflow_af": 10572,
-    "reading_id": "GR-000801",
     "reservoir_id": "RES-05",
     "sensor": "acoustic"
   },
@@ -6687,15 +6399,6 @@
     "sensor": "radar"
   },
   {
-    "corrected_inflow_af": 13435,
-    "day": 104,
-    "quality": "good",
-    "raw_inflow_af": 13575,
-    "reading_id": "GR-000825",
-    "reservoir_id": "RES-05",
-    "sensor": "pressure"
-  },
-  {
     "corrected_inflow_af": 24171,
     "day": 105,
     "quality": "good",
@@ -6892,15 +6595,6 @@
     "reading_id": "GR-000849",
     "reservoir_id": "RES-05",
     "sensor": "pressure"
-  },
-  {
-    "corrected_inflow_af": 14900,
-    "day": 129,
-    "quality": "good",
-    "raw_inflow_af": 14580,
-    "reading_id": "GR-000850",
-    "reservoir_id": "RES-05",
-    "sensor": "float"
   },
   {
     "corrected_inflow_af": 34906,
@@ -7101,15 +6795,6 @@
     "sensor": "acoustic"
   },
   {
-    "corrected_inflow_af": 12454,
-    "day": 154,
-    "quality": "good",
-    "raw_inflow_af": 12134,
-    "reading_id": "GR-000875",
-    "reservoir_id": "RES-05",
-    "sensor": "float"
-  },
-  {
     "corrected_inflow_af": 38449,
     "day": 155,
     "quality": "suspect",
@@ -7306,15 +6991,6 @@
     "reading_id": "GR-000900",
     "reservoir_id": "RES-05",
     "sensor": "acoustic"
-  },
-  {
-    "corrected_inflow_af": 1284,
-    "day": 0,
-    "quality": "suspect",
-    "raw_inflow_af": 1359,
-    "reading_id": "GR-000901",
-    "reservoir_id": "RES-06",
-    "sensor": "radar"
   },
   {
     "corrected_inflow_af": 2507,
@@ -7515,15 +7191,6 @@
     "sensor": "radar"
   },
   {
-    "corrected_inflow_af": 1325,
-    "day": 24,
-    "quality": "good",
-    "raw_inflow_af": 1325,
-    "reading_id": "GR-000925",
-    "reservoir_id": "RES-06",
-    "sensor": "acoustic"
-  },
-  {
     "corrected_inflow_af": 4295,
     "day": 25,
     "quality": "good",
@@ -7720,15 +7387,6 @@
     "reading_id": "GR-000951",
     "reservoir_id": "RES-06",
     "sensor": "acoustic"
-  },
-  {
-    "corrected_inflow_af": 3604,
-    "day": 51,
-    "quality": "suspect",
-    "raw_inflow_af": 3679,
-    "reading_id": "GR-000952",
-    "reservoir_id": "RES-06",
-    "sensor": "radar"
   },
   {
     "corrected_inflow_af": 3847,
@@ -7929,15 +7587,6 @@
     "sensor": "pressure"
   },
   {
-    "corrected_inflow_af": 25614,
-    "day": 77,
-    "quality": "good",
-    "raw_inflow_af": 25689,
-    "reading_id": "GR-000978",
-    "reservoir_id": "RES-06",
-    "sensor": "radar"
-  },
-  {
     "corrected_inflow_af": 31828,
     "day": 78,
     "quality": "good",
@@ -8134,15 +7783,6 @@
     "reading_id": "GR-001001",
     "reservoir_id": "RES-06",
     "sensor": "pressure"
-  },
-  {
-    "corrected_inflow_af": 1422,
-    "day": 101,
-    "quality": "good",
-    "raw_inflow_af": 1422,
-    "reading_id": "GR-001002",
-    "reservoir_id": "RES-06",
-    "sensor": "acoustic"
   },
   {
     "corrected_inflow_af": 3156,
@@ -8343,15 +7983,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 3128,
-    "day": 127,
-    "quality": "good",
-    "raw_inflow_af": 3268,
-    "reading_id": "GR-001028",
-    "reservoir_id": "RES-06",
-    "sensor": "pressure"
-  },
-  {
     "corrected_inflow_af": 1259,
     "day": 128,
     "quality": "good",
@@ -8548,15 +8179,6 @@
     "reading_id": "GR-001053",
     "reservoir_id": "RES-06",
     "sensor": "acoustic"
-  },
-  {
-    "corrected_inflow_af": 2151,
-    "day": 154,
-    "quality": "good",
-    "raw_inflow_af": 2226,
-    "reading_id": "GR-001055",
-    "reservoir_id": "RES-06",
-    "sensor": "radar"
   },
   {
     "corrected_inflow_af": 1057,
@@ -8757,15 +8379,6 @@
     "sensor": "radar"
   },
   {
-    "corrected_inflow_af": 10082,
-    "day": 0,
-    "quality": "good",
-    "raw_inflow_af": 10157,
-    "reading_id": "GR-001081",
-    "reservoir_id": "RES-07",
-    "sensor": "radar"
-  },
-  {
     "corrected_inflow_af": 12976,
     "day": 2,
     "quality": "good",
@@ -8960,15 +8573,6 @@
     "quality": "good",
     "raw_inflow_af": 19203,
     "reading_id": "GR-001108",
-    "reservoir_id": "RES-07",
-    "sensor": "radar"
-  },
-  {
-    "corrected_inflow_af": 12124,
-    "day": 28,
-    "quality": "good",
-    "raw_inflow_af": 12199,
-    "reading_id": "GR-001109",
     "reservoir_id": "RES-07",
     "sensor": "radar"
   },
@@ -9171,15 +8775,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 17046,
-    "day": 55,
-    "quality": "suspect",
-    "raw_inflow_af": 16726,
-    "reading_id": "GR-001136",
-    "reservoir_id": "RES-07",
-    "sensor": "float"
-  },
-  {
     "corrected_inflow_af": 8009,
     "day": 56,
     "quality": "suspect",
@@ -9378,15 +8973,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 4664,
-    "day": 80,
-    "quality": "good",
-    "raw_inflow_af": 4664,
-    "reading_id": "GR-001161",
-    "reservoir_id": "RES-07",
-    "sensor": "acoustic"
-  },
-  {
     "corrected_inflow_af": 21217,
     "day": 81,
     "quality": "good",
@@ -9581,15 +9167,6 @@
     "quality": "good",
     "raw_inflow_af": 7858,
     "reading_id": "GR-001184",
-    "reservoir_id": "RES-07",
-    "sensor": "acoustic"
-  },
-  {
-    "corrected_inflow_af": 3537,
-    "day": 104,
-    "quality": "good",
-    "raw_inflow_af": 3537,
-    "reading_id": "GR-001185",
     "reservoir_id": "RES-07",
     "sensor": "acoustic"
   },
@@ -9792,15 +9369,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 10220,
-    "day": 129,
-    "quality": "suspect",
-    "raw_inflow_af": 10220,
-    "reading_id": "GR-001210",
-    "reservoir_id": "RES-07",
-    "sensor": "acoustic"
-  },
-  {
     "corrected_inflow_af": 23481,
     "day": 130,
     "quality": "good",
@@ -9999,15 +9567,6 @@
     "sensor": "acoustic"
   },
   {
-    "corrected_inflow_af": 5224,
-    "day": 158,
-    "quality": "good",
-    "raw_inflow_af": 4904,
-    "reading_id": "GR-001239",
-    "reservoir_id": "RES-07",
-    "sensor": "float"
-  },
-  {
     "corrected_inflow_af": 10199,
     "day": 159,
     "quality": "good",
@@ -10202,15 +9761,6 @@
     "quality": "good",
     "raw_inflow_af": 20774,
     "reading_id": "GR-001263",
-    "reservoir_id": "RES-08",
-    "sensor": "pressure"
-  },
-  {
-    "corrected_inflow_af": 6633,
-    "day": 3,
-    "quality": "suspect",
-    "raw_inflow_af": 6773,
-    "reading_id": "GR-001264",
     "reservoir_id": "RES-08",
     "sensor": "pressure"
   },
@@ -10413,15 +9963,6 @@
     "sensor": "acoustic"
   },
   {
-    "corrected_inflow_af": 9932,
-    "day": 32,
-    "quality": "suspect",
-    "raw_inflow_af": 10007,
-    "reading_id": "GR-001293",
-    "reservoir_id": "RES-08",
-    "sensor": "radar"
-  },
-  {
     "corrected_inflow_af": 14641,
     "day": 33,
     "quality": "suspect",
@@ -10618,15 +10159,6 @@
     "reading_id": "GR-001317",
     "reservoir_id": "RES-08",
     "sensor": "radar"
-  },
-  {
-    "corrected_inflow_af": 6959,
-    "day": 57,
-    "quality": "good",
-    "raw_inflow_af": 6639,
-    "reading_id": "GR-001318",
-    "reservoir_id": "RES-08",
-    "sensor": "float"
   },
   {
     "corrected_inflow_af": 12089,
@@ -10827,15 +10359,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 8816,
-    "day": 82,
-    "quality": "good",
-    "raw_inflow_af": 8956,
-    "reading_id": "GR-001343",
-    "reservoir_id": "RES-08",
-    "sensor": "pressure"
-  },
-  {
     "corrected_inflow_af": 16945,
     "day": 83,
     "quality": "good",
@@ -11032,15 +10555,6 @@
     "reading_id": "GR-001366",
     "reservoir_id": "RES-08",
     "sensor": "float"
-  },
-  {
-    "corrected_inflow_af": 18530,
-    "day": 106,
-    "quality": "good",
-    "raw_inflow_af": 18530,
-    "reading_id": "GR-001367",
-    "reservoir_id": "RES-08",
-    "sensor": "acoustic"
   },
   {
     "corrected_inflow_af": 15116,
@@ -11241,15 +10755,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 19481,
-    "day": 134,
-    "quality": "good",
-    "raw_inflow_af": 19481,
-    "reading_id": "GR-001395",
-    "reservoir_id": "RES-08",
-    "sensor": "acoustic"
-  },
-  {
     "corrected_inflow_af": 8757,
     "day": 135,
     "quality": "good",
@@ -11446,15 +10951,6 @@
     "reading_id": "GR-001421",
     "reservoir_id": "RES-08",
     "sensor": "radar"
-  },
-  {
-    "corrected_inflow_af": 7675,
-    "day": 161,
-    "quality": "good",
-    "raw_inflow_af": 7675,
-    "reading_id": "GR-001422",
-    "reservoir_id": "RES-08",
-    "sensor": "acoustic"
   },
   {
     "corrected_inflow_af": 16996,
@@ -11655,15 +11151,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 30231,
-    "day": 7,
-    "quality": "good",
-    "raw_inflow_af": 30231,
-    "reading_id": "GR-001448",
-    "reservoir_id": "RES-09",
-    "sensor": "acoustic"
-  },
-  {
     "corrected_inflow_af": 4225,
     "day": 8,
     "quality": "good",
@@ -11858,15 +11345,6 @@
     "quality": "good",
     "raw_inflow_af": 7151,
     "reading_id": "GR-001472",
-    "reservoir_id": "RES-09",
-    "sensor": "acoustic"
-  },
-  {
-    "corrected_inflow_af": 17348,
-    "day": 33,
-    "quality": "good",
-    "raw_inflow_af": 17348,
-    "reading_id": "GR-001474",
     "reservoir_id": "RES-09",
     "sensor": "acoustic"
   },
@@ -12069,15 +11547,6 @@
     "sensor": "pressure"
   },
   {
-    "corrected_inflow_af": 87039,
-    "day": 63,
-    "quality": "good",
-    "raw_inflow_af": 87039,
-    "reading_id": "GR-001504",
-    "reservoir_id": "RES-09",
-    "sensor": "acoustic"
-  },
-  {
     "corrected_inflow_af": 70547,
     "day": 64,
     "quality": "good",
@@ -12274,15 +11743,6 @@
     "reading_id": "GR-001526",
     "reservoir_id": "RES-09",
     "sensor": "float"
-  },
-  {
-    "corrected_inflow_af": 33016,
-    "day": 87,
-    "quality": "good",
-    "raw_inflow_af": 33016,
-    "reading_id": "GR-001528",
-    "reservoir_id": "RES-09",
-    "sensor": "acoustic"
   },
   {
     "corrected_inflow_af": 20037,
@@ -12483,15 +11943,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 14637,
-    "day": 113,
-    "quality": "good",
-    "raw_inflow_af": 14777,
-    "reading_id": "GR-001554",
-    "reservoir_id": "RES-09",
-    "sensor": "pressure"
-  },
-  {
     "corrected_inflow_af": 17038,
     "day": 114,
     "quality": "good",
@@ -12688,15 +12139,6 @@
     "reading_id": "GR-001581",
     "reservoir_id": "RES-09",
     "sensor": "pressure"
-  },
-  {
-    "corrected_inflow_af": 6258,
-    "day": 141,
-    "quality": "good",
-    "raw_inflow_af": 6258,
-    "reading_id": "GR-001582",
-    "reservoir_id": "RES-09",
-    "sensor": "acoustic"
   },
   {
     "corrected_inflow_af": 33223,
@@ -12897,15 +12339,6 @@
     "sensor": "radar"
   },
   {
-    "corrected_inflow_af": 17440,
-    "day": 166,
-    "quality": "suspect",
-    "raw_inflow_af": 17440,
-    "reading_id": "GR-001607",
-    "reservoir_id": "RES-09",
-    "sensor": "acoustic"
-  },
-  {
     "corrected_inflow_af": 18011,
     "day": 167,
     "quality": "good",
@@ -13102,15 +12535,6 @@
     "reading_id": "GR-001631",
     "reservoir_id": "RES-10",
     "sensor": "pressure"
-  },
-  {
-    "corrected_inflow_af": 16230,
-    "day": 11,
-    "quality": "good",
-    "raw_inflow_af": 16230,
-    "reading_id": "GR-001632",
-    "reservoir_id": "RES-10",
-    "sensor": "acoustic"
   },
   {
     "corrected_inflow_af": 4654,
@@ -13311,15 +12735,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 9435,
-    "day": 36,
-    "quality": "suspect",
-    "raw_inflow_af": 9575,
-    "reading_id": "GR-001657",
-    "reservoir_id": "RES-10",
-    "sensor": "pressure"
-  },
-  {
     "corrected_inflow_af": 5900,
     "day": 38,
     "quality": "good",
@@ -13516,15 +12931,6 @@
     "reading_id": "GR-001683",
     "reservoir_id": "RES-10",
     "sensor": "pressure"
-  },
-  {
-    "corrected_inflow_af": 57792,
-    "day": 63,
-    "quality": "good",
-    "raw_inflow_af": 57792,
-    "reading_id": "GR-001684",
-    "reservoir_id": "RES-10",
-    "sensor": "acoustic"
   },
   {
     "corrected_inflow_af": 76076,
@@ -13725,15 +13131,6 @@
     "sensor": "radar"
   },
   {
-    "corrected_inflow_af": 13897,
-    "day": 89,
-    "quality": "good",
-    "raw_inflow_af": 13897,
-    "reading_id": "GR-001710",
-    "reservoir_id": "RES-10",
-    "sensor": "acoustic"
-  },
-  {
     "corrected_inflow_af": 17746,
     "day": 90,
     "quality": "good",
@@ -13930,15 +13327,6 @@
     "reading_id": "GR-001733",
     "reservoir_id": "RES-10",
     "sensor": "radar"
-  },
-  {
-    "corrected_inflow_af": 18320,
-    "day": 113,
-    "quality": "good",
-    "raw_inflow_af": 18320,
-    "reading_id": "GR-001734",
-    "reservoir_id": "RES-10",
-    "sensor": "acoustic"
   },
   {
     "corrected_inflow_af": 6262,
@@ -14139,15 +13527,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 13709,
-    "day": 138,
-    "quality": "good",
-    "raw_inflow_af": 13709,
-    "reading_id": "GR-001759",
-    "reservoir_id": "RES-10",
-    "sensor": "acoustic"
-  },
-  {
     "corrected_inflow_af": 12352,
     "day": 139,
     "quality": "good",
@@ -14346,15 +13725,6 @@
     "sensor": "pressure"
   },
   {
-    "corrected_inflow_af": 6206,
-    "day": 164,
-    "quality": "good",
-    "raw_inflow_af": 6206,
-    "reading_id": "GR-001785",
-    "reservoir_id": "RES-10",
-    "sensor": "acoustic"
-  },
-  {
     "corrected_inflow_af": 19526,
     "day": 165,
     "quality": "good",
@@ -14549,15 +13919,6 @@
     "quality": "good",
     "raw_inflow_af": 31059,
     "reading_id": "GR-001808",
-    "reservoir_id": "RES-11",
-    "sensor": "radar"
-  },
-  {
-    "corrected_inflow_af": 38805,
-    "day": 8,
-    "quality": "good",
-    "raw_inflow_af": 38880,
-    "reading_id": "GR-001809",
     "reservoir_id": "RES-11",
     "sensor": "radar"
   },
@@ -14760,15 +14121,6 @@
     "sensor": "radar"
   },
   {
-    "corrected_inflow_af": 33942,
-    "day": 35,
-    "quality": "good",
-    "raw_inflow_af": 33622,
-    "reading_id": "GR-001836",
-    "reservoir_id": "RES-11",
-    "sensor": "float"
-  },
-  {
     "corrected_inflow_af": 19020,
     "day": 36,
     "quality": "good",
@@ -14967,15 +14319,6 @@
     "sensor": "acoustic"
   },
   {
-    "corrected_inflow_af": 16446,
-    "day": 59,
-    "quality": "good",
-    "raw_inflow_af": 16126,
-    "reading_id": "GR-001860",
-    "reservoir_id": "RES-11",
-    "sensor": "float"
-  },
-  {
     "corrected_inflow_af": 223705,
     "day": 61,
     "quality": "good",
@@ -15170,15 +14513,6 @@
     "quality": "good",
     "raw_inflow_af": 15645,
     "reading_id": "GR-001885",
-    "reservoir_id": "RES-11",
-    "sensor": "pressure"
-  },
-  {
-    "corrected_inflow_af": 17024,
-    "day": 85,
-    "quality": "good",
-    "raw_inflow_af": 17164,
-    "reading_id": "GR-001886",
     "reservoir_id": "RES-11",
     "sensor": "pressure"
   },
@@ -15381,15 +14715,6 @@
     "sensor": "acoustic"
   },
   {
-    "corrected_inflow_af": 20312,
-    "day": 111,
-    "quality": "good",
-    "raw_inflow_af": 20452,
-    "reading_id": "GR-001912",
-    "reservoir_id": "RES-11",
-    "sensor": "pressure"
-  },
-  {
     "corrected_inflow_af": 10160,
     "day": 112,
     "quality": "suspect",
@@ -15586,15 +14911,6 @@
     "reading_id": "GR-001937",
     "reservoir_id": "RES-11",
     "sensor": "radar"
-  },
-  {
-    "corrected_inflow_af": 14967,
-    "day": 137,
-    "quality": "good",
-    "raw_inflow_af": 15107,
-    "reading_id": "GR-001938",
-    "reservoir_id": "RES-11",
-    "sensor": "pressure"
   },
   {
     "corrected_inflow_af": 20589,
@@ -15795,15 +15111,6 @@
     "sensor": "float"
   },
   {
-    "corrected_inflow_af": 12251,
-    "day": 161,
-    "quality": "good",
-    "raw_inflow_af": 12391,
-    "reading_id": "GR-001962",
-    "reservoir_id": "RES-11",
-    "sensor": "pressure"
-  },
-  {
     "corrected_inflow_af": 38800,
     "day": 162,
     "quality": "good",
@@ -16000,15 +15307,6 @@
     "reading_id": "GR-001987",
     "reservoir_id": "RES-12",
     "sensor": "radar"
-  },
-  {
-    "corrected_inflow_af": 11320,
-    "day": 7,
-    "quality": "good",
-    "raw_inflow_af": 11320,
-    "reading_id": "GR-001988",
-    "reservoir_id": "RES-12",
-    "sensor": "acoustic"
   },
   {
     "corrected_inflow_af": 20640,
@@ -16209,15 +15507,6 @@
     "sensor": "acoustic"
   },
   {
-    "corrected_inflow_af": 7348,
-    "day": 34,
-    "quality": "good",
-    "raw_inflow_af": 7488,
-    "reading_id": "GR-002015",
-    "reservoir_id": "RES-12",
-    "sensor": "pressure"
-  },
-  {
     "corrected_inflow_af": 13933,
     "day": 35,
     "quality": "good",
@@ -16414,15 +15703,6 @@
     "reading_id": "GR-002043",
     "reservoir_id": "RES-12",
     "sensor": "float"
-  },
-  {
-    "corrected_inflow_af": 31882,
-    "day": 63,
-    "quality": "good",
-    "raw_inflow_af": 32022,
-    "reading_id": "GR-002044",
-    "reservoir_id": "RES-12",
-    "sensor": "pressure"
   },
   {
     "corrected_inflow_af": 76731,
@@ -16623,15 +15903,6 @@
     "sensor": "radar"
   },
   {
-    "corrected_inflow_af": 13448,
-    "day": 87,
-    "quality": "good",
-    "raw_inflow_af": 13588,
-    "reading_id": "GR-002068",
-    "reservoir_id": "RES-12",
-    "sensor": "pressure"
-  },
-  {
     "corrected_inflow_af": 17804,
     "day": 88,
     "quality": "good",
@@ -16828,15 +16099,6 @@
     "reading_id": "GR-002093",
     "reservoir_id": "RES-12",
     "sensor": "acoustic"
-  },
-  {
-    "corrected_inflow_af": 24093,
-    "day": 113,
-    "quality": "good",
-    "raw_inflow_af": 23773,
-    "reading_id": "GR-002094",
-    "reservoir_id": "RES-12",
-    "sensor": "float"
   },
   {
     "corrected_inflow_af": 21827,
@@ -17037,15 +16299,6 @@
     "sensor": "pressure"
   },
   {
-    "corrected_inflow_af": 7887,
-    "day": 137,
-    "quality": "good",
-    "raw_inflow_af": 7567,
-    "reading_id": "GR-002118",
-    "reservoir_id": "RES-12",
-    "sensor": "float"
-  },
-  {
     "corrected_inflow_af": 13748,
     "day": 138,
     "quality": "good",
@@ -17242,15 +16495,6 @@
     "reading_id": "GR-002141",
     "reservoir_id": "RES-12",
     "sensor": "float"
-  },
-  {
-    "corrected_inflow_af": 20668,
-    "day": 161,
-    "quality": "suspect",
-    "raw_inflow_af": 20808,
-    "reading_id": "GR-002142",
-    "reservoir_id": "RES-12",
-    "sensor": "pressure"
   },
   {
     "corrected_inflow_af": 13858,

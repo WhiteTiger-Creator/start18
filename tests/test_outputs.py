@@ -6,13 +6,33 @@ Shared machinery lives in harness.py.
 
 from harness import *  # noqa: F401,F403
 
+
+# The registers and the policy as the image ships them, captured once at import.
+# The crafted probes below rewrite those three files and restore them in a
+# finally, so the shipped state is what a graded run reads -- but only because
+# the session fixtures happen to be instantiated by a test that precedes the
+# probes in file order. Under `-k`, a reordering, or a partial run, a fixture
+# could be built while a probe's crafted register was still on disk and grade
+# the run against a basin the task never ships. Restoring these bytes first
+# makes the two graded runs independent of when they are asked for.
+SHIPPED_INPUTS = {p: p.read_bytes() for p in (RESERVOIR_PATH, RIGHTS_PATH, POLICY_PATH)}
+
+
+def _restore_shipped_inputs():
+    for path, blob in SHIPPED_INPUTS.items():
+        if path.read_bytes() != blob:
+            path.write_bytes(blob)
+
+
 @pytest.fixture(scope="session")
 def primary_outputs():
+    _restore_shipped_inputs()
     return _run_pipeline()
 
 
 @pytest.fixture(scope="session")
 def alternate_outputs():
+    _restore_shipped_inputs()
     return _run_pipeline(input_path=ALT_INPUT)
 
 
@@ -356,6 +376,25 @@ def _probe(readings, reservoirs, rights, *, horizon=1, curtail_year=1960,
     finally:
         for path, text in saved.items():
             path.write_text(text, encoding="utf-8")
+
+
+def test_the_reading_count_is_the_series_the_run_was_handed():
+    """#BAS-8198's counter is read off the input, not carried as a constant.
+
+    A scheduler that emits a fixed reading_count matched both sealed summaries
+    for as long as the graded and the held-out series happened to carry the same
+    number of readings, and nothing else looked at the figure. The held-out
+    series is a different length now, and this probe pins the rule outright: two
+    crafted series of distinctive and different sizes, each of which the counter
+    has to follow.
+    """
+    for size in (3, 17):
+        readings = [_reading(f"GR-{i:03d}", day=0, corrected=10) for i in range(size)]
+        _, summary, _, _ = _probe(readings, [_reservoir(env=0, opening=10_000)], [])
+        assert summary["reading_count"] == size, (
+            f"a series of {size} readings reported reading_count "
+            f"{summary['reading_count']}; the counter is the series the run was "
+            "handed, not a constant")
 
 
 def test_a_suspect_reading_carries_no_water_but_its_day_is_still_scheduled():
@@ -985,6 +1024,14 @@ def test_a_run_writes_nothing_outside_its_output_directory():
         # differs by nothing and the write passes unseen. Size and modification
         # time are recorded with each file, which catches the rewrite as well as
         # the first write.
+        #
+        # Only what the CANDIDATE owns is recorded. The sweep reaches /tmp and
+        # the tmpfs mounts, where the verifier's own machinery also writes, and
+        # a root-owned file appearing there is not this run leaving its output
+        # directory. The graded binary runs as CANDIDATE_UID and everything it
+        # writes carries that owner, so filtering on it keeps the check pointed
+        # at the run under test rather than at whatever else touched the
+        # container while it ran.
         seen = {}
         for root in watched:
             if not root.exists():
@@ -993,6 +1040,8 @@ def test_a_run_writes_nothing_outside_its_output_directory():
                 try:
                     st = q.stat()
                 except OSError:
+                    continue
+                if st.st_uid != CANDIDATE_UID:
                     continue
                 seen[str(q)] = (st.st_mtime_ns, st.st_size) if not q.is_dir() else None
         return seen
@@ -1286,3 +1335,4 @@ def test_a_flood_day_records_the_curtailment_but_raises_no_deficit():
     assert [(r["day"], r["right_id"], r["reason"]) for r in queue] == [
         (0, "WR-0002", "flood_operation"), (1, "WR-0002", "supply_short")], (
         "a flood day left a deficit behind, which #BAS-8214 forbids")
+

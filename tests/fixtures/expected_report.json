@@ -1,23 +1,23 @@
 {
   "alternate": {
-    "queue_digest": "dec0a3e6696d2d792bf56d64fa7a91e56e6f4b513cef40e4b89a0df19a299a86",
-    "schedule_digest": "0221f990b5bdcb6bbe91e3fd25338ce72495f22c6e847f22ca80c336937f1fc8",
+    "queue_digest": "b625304dbdace3142de1eb12dc3fd31d567093729119a6c2912f5fd69b66c0f6",
+    "schedule_digest": "0bc07cc6879696a33654eaf757b69a377491bf78fc0153e3c3148c173616c913",
     "summary": {
-      "curtailment_count": 5170,
-      "deficit_led_service_count": 198,
+      "curtailment_count": 5013,
+      "deficit_led_service_count": 204,
       "effective_curtail_year": 1960,
       "effective_flood_fraction": 35,
       "effective_horizon_days": 180,
       "effective_max_curtailments": 2400,
-      "outlet_bound_day_count": 202,
-      "reading_count": 1930,
+      "outlet_bound_day_count": 188,
+      "reading_count": 1846,
       "recorded_curtailment_count": 2400,
       "reservoir_count": 12,
       "right_count": 260,
       "scheduled_day_count": 2160,
       "schema_version": "basin-release-v1",
-      "total_release_af": 29222776,
-      "total_shortfall_af": 2437759
+      "total_release_af": 28370283,
+      "total_shortfall_af": 2366107
     }
   },
   "broken_scheduler_sha256": "a3d958591f602c4c21ebfa63c96570f5657adab5396c7da7ccf15827a729ba7a",
