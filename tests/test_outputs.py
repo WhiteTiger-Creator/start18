@@ -162,6 +162,15 @@ def test_wrong_replays_differ_from_the_governed_series():
         rows.sort(key=lambda r: (r["reservoir_id"], r["day"], r["reading_id"]))
         return _digest(rows)
 
+    # The governed reading FIRST. Without it the sealed digest is a private
+    # oracle: the four misreadings below are each asserted unequal to it, which
+    # says nothing about whether the digest is what the minutes actually
+    # describe. This connects the two -- a replay in ascending seq, restoring
+    # the held state rather than the snapshot, adding the datum offset -- and
+    # only then are the misreadings worth comparing against it.
+    assert replay(True, False, False) == expected, (
+        "the verifier's own reading of #BAS-8170 and #BAS-8174 does not reproduce "
+        "the sealed digest, so the fixture and the minutes have come apart")
     assert replay(False, False, False) != expected   # replayed in file order
     assert replay(True, True, False) != expected     # restore re-reads the snapshot
     assert replay(True, False, True) != expected     # datum offset subtracted
