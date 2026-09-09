@@ -979,12 +979,20 @@ def _writable_roots(work: Path) -> list:
     return kept
 
 
-def test_a_run_writes_nothing_outside_its_output_directory():
+def test_a_run_leaves_nothing_outside_its_output_directory():
     """instruction.md scopes a run to its --output-dir, and nothing checked it.
 
     Every other run here reads the three artifacts by name, so a run that also
     dropped a scratch file beside them, or in the directory it was started from,
     satisfied all of them. This walks the whole work area afterwards.
+
+    What is graded is the state the run LEAVES, which is what the instruction now
+    asks for. Writing an artifact through a temporary file elsewhere and renaming
+    it into place is an ordinary way to write a file atomically, and a check that
+    failed it would be failing correct work; a scratch file that outlives the run
+    is a different thing, and so is one the run takes away that it did not put
+    there. Both of those are caught below, in all three directions: added,
+    changed, and gone.
     """
     binary = _build(WORKFLOW_PATH)
     _publish_inputs()
@@ -1057,8 +1065,14 @@ def test_a_run_writes_nothing_outside_its_output_directory():
     expected = sorted(str(out_dir / n) for n in (
         "curtailment_queue.jsonl", "release_schedule.json", "summary.json"))
     assert written == expected, (
-        f"the run wrote outside its output directory: "
+        f"the run left something outside its output directory: "
         f"{[q for q in written if q not in expected]}")
+    # and the other direction, which the set difference above cannot see: a file
+    # the sweep held before the run and no longer holds after it was taken away
+    # by the run, which is as much a mark left outside the output directory as a
+    # file added there
+    gone = sorted(q for q in before if q not in after)
+    assert not gone, f"the run removed files outside its output directory: {gone}"
     # and it is the real run being scoped, not a run that did nothing
     assert _load_json(out_dir / "summary.json") == FIXTURE["primary"]["summary"]
 
